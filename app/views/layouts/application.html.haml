@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
+    %title 아카이브즈
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/d1995cff7d.js"}
+  %body.bg-light
+    = render "header"
+
+    - if current_page?(root_url)
+      %header
+        .container
+          .py-5.text-center
+            %span.display-3.bg-dark.text-white.rounded.px-4.font-weight-bold I
+            %h2.mt-4
+              %span.font-weight-bold 이슈즈
+              %small.font-weight-light .asia
+            %p.p-2.lead.text-muted
+              오늘의 이슈를 모읍니다
+
+    %main.py-2
+      .container
+        .row
+          .col-md-8
+            = yield
+          .col-md-4.mb-4
+
+    %footer.my-5.pt-5.text-muted.text-center.text-small
+      %p.mb-1
+        = link_to '더 민주적인 세상을 만듭니다. 사회적협동조합 빠띠', 'https://parti.coop', target: :blank, class: "text-dark"
+      %ul.list-inline
+        %li.list-inline-item
+          = link_to "문의", "https://democracy-activists.parti.xyz/p/data_activists", target: "_blank", class: "text-dark"
+        %li.list-inline-item
+          %a.text-dark{:href => "#"} 이용약관
+        %li.list-inline-item
+          %a.text-dark{:href => "#"} 개인정보취급방침

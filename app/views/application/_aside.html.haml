@@ -1,0 +1,14 @@
+= render "search_bar"
+
+%section
+  %h4.text-muted= t('title.recent_updates')
+  .mb-4.list-group
+
+%section
+  .mb-4
+    .border.p-3
+      .media
+        = image_tag 'parti_symbol.png', width: 70, class: "mr-3"
+        .media-body
+          %h5.mt-0= link_to '빠띠 데이터 활동가 커뮤니티', "https://democracy-activists.parti.xyz/p/data_activists", target: "_blank", class: "text-dark"
+          = link_to "데이터로 더 투명하고 신뢰하는 사회를 만듭니다", "https://democracy-activists.parti.xyz/p/data_activists", target: "_blank", class: "text-dark"

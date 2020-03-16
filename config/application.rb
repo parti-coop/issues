@@ -15,5 +15,9 @@ module Issues
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.time_zone = 'Asia/Seoul'
+    config.i18n.default_locale = :ko
+    config.i18n.available_locales = [:en, :ko]
   end
 end
