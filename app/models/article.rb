@@ -4,14 +4,14 @@ class Article < ApplicationRecord
   # acts_as_taggable
   paginates_per 20
 
-  belongs_to :user, optional: true
+  belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
   scope :recent, -> { order('id DESC') }
   scope :hot, -> { order('hot_scored_datestamp DESC').order('hot_score DESC').order('likes_count DESC') }
 
   # mount
-  mount_uploader :image, ImageUploader
+  has_one_attached :image
 
   after_initialize :set_crawling_status
 

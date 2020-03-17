@@ -1,12 +1,10 @@
 class ArticlesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :create_by_slack
-  load_and_authorize_resource
   HASHTAG_REGEX = /(?:\s|^)(#(?!(?:\d+|[ㄱ-ㅎ가-힣a-z0-9_]+?_|_[ㄱ-ㅎ가-힣a-z0-9_]+?)(?:\s|$))([ㄱ-ㅎ가-힣a-z0-9\-_]+))/i
 
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def index
-    sort = params[:sort] || 'recent'
-    tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag).send(sort).recent.page(params[:page]) : Article.send(sort).recent.page(params[:page])
+    @articles = Article.page(params[:page])
   end
 
   def new
@@ -14,10 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @article = Article.new(article_params)
     @article.user = current_user
     hastag
     if @article.save
-      CrawlingJob.perform_async(@article.id)
+      # CrawlingJob.perform_async(@article.id)
       redirect_to articles_path(sort: :recent)
     else
       errors_to_flash(@article)
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(url: parsed_url, body: slack_text)
     hastag
     @article.save!
-    CrawlingJob.perform_async(@article.id)
+    # CrawlingJob.perform_async(@article.id)
   end
 
   def edit
@@ -62,6 +61,10 @@ class ArticlesController < ApplicationController
 
   private
 
+  def set_article
+    Article.find(params[:id])
+  end
+
   def article_params
     params.require(:article).permit(:url, :body)
   end
@@ -69,6 +72,6 @@ class ArticlesController < ApplicationController
   def hastag
     return if @article.body.blank?
     strip_body = Nokogiri::HTML(@article.body).xpath('//text()').map(&:text).join(' ').gsub("&nbsp;", " ")
-    @article.tag_list = strip_body.scan(HASHTAG_REGEX).map { |match| match[1] }.join(', ')
+    # @article.tag_list = strip_body.scan(HASHTAG_REGEX).map { |match| match[1] }.join(', ')
   end
 end

@@ -16,13 +16,15 @@ ko:
 
   site_name: 이슈즈.asia
   menu:
+    articles: 기사 목록
     issues: 이슈
     tags: 태그
     search: 검색
   title:
-    main: 이슈
+    main: 기사 목록
     recent_updates: 최신 데이터
   link:
+    new_article: 기사 입력
     new: 추가
     edit: 수정
     destroy: 삭제
