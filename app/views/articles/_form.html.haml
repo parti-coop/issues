@@ -1,0 +1,18 @@
+.articles
+  .panel.panel-default.panel-flaoting
+    .panel-body
+      = form_for @article do |f|
+        .form-group
+          = f.label :url
+          = f.text_field :url, class: 'form-control'
+          %p.help-block
+            http://나 https://로 시작하는 주소를 넣어주세요.
+
+        .form-group
+          = f.label :body
+          ~ f.text_area :body, rows: 10, class: 'form-control redactor'
+          %p.help-block
+            \#을 쓰면 태그가 됩니다.
+
+        .form-group
+          = f.submit '저장', class: 'btn btn-primary'

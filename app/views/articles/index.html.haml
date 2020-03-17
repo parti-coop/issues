@@ -1,0 +1,41 @@
+%section
+  .container
+    .page-header
+      %h2
+        = Article.model_name.human
+        - if params[:tag].present?
+          &gt;
+          \##{params[:tag]}
+        %small.pull-right
+          = link_to "추가하기", new_article_path, class: 'btn btn-default btn-sm'
+
+    - tag_counts = Article.tag_counts_on(:tags).sort_by(&:count).reverse
+    - if tag_counts.any?
+      - tag_counts.each do |tag|
+        - if tag.count > 5
+          - if params[:tag] == tag.name
+            = link_to articles_path(tag: tag.name), class: 'btn btn-primary' do
+              = tag.name
+              %small= tag.count
+          - else
+            = link_to articles_path(tag: tag.name), class: 'btn btn-default btn-inverted' do
+              = tag.name
+              %small= tag.count
+
+%section.page-block
+  .container
+    %ul.nav.nav-tabs.tabs-material.m-b
+      %li{ class: ('active' if params[:sort] == 'hot') }
+        = link_to articles_path(sort: :hot, tag: params[:tag]) do
+          인기순
+      %li{ class: ('active' if params[:sort] == 'recent' or params[:sort].blank?) }
+        = link_to articles_path(sort: :recent, tag: params[:tag]) do
+          최신순
+
+    %section
+      .panel.panel-default
+        .list-group
+          = render @articles
+
+    .text-center
+      = paginate @articles, theme: 'twitter-bootstrap-3'

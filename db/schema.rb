@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_074730) do
+ActiveRecord::Schema.define(version: 2020_03_17_034602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.text "url"
+    t.text "body"
+    t.string "title"
+    t.text "desc"
+    t.text "metadata"
+    t.string "image"
+    t.string "page_type"
+    t.string "crawling_status"
+    t.datetime "crawled_at"
+    t.string "site_name"
+    t.integer "image_height", default: 0
+    t.integer "image_width", default: 0
+    t.bigint "user_id"
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
+    t.integer "anonymous_likes_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "hot_score", default: 0
+    t.string "hot_scored_datestamp"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

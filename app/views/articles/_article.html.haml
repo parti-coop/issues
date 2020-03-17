@@ -1,0 +1,28 @@
+.list-group-item
+  .media
+    .media-left
+      - if article.image_present?
+        = image_tag article.image.sm.url, class: 'image-object'
+    .media-body
+      %h4.media-heading= link_to article.title, article.url
+      .media-meta.text-muted
+        %span= article.site_name
+        - if article.user.present?
+          = link_to article.user do
+            %span
+              = image_tag article.user.image.sm, class: 'user-thumb-sm'
+              = article.user.nickname
+        %span
+          - if can? :update, article
+            = link_to [:edit, article] do
+              %i.fa.fa-edit
+          - if can? :destroy, article
+            = link_to article, method: :delete, data: { confirm: '삭제하시겠습니까?' } do
+              %i.fa.fa-trash
+      .media-description.text-muted
+        = excerpt(article.desc, length: 90)
+      - article.tags.each do |tag|
+        = link_to articles_path(tag: tag.name) do
+          %span.label.label-default ##{tag.name}
+    .media-right.text-right
+      = render 'likes/button', likable: article

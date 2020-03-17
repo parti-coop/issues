@@ -1,0 +1,7 @@
+%section#article.page-block
+  .container
+    %h4
+      = link_to Article.model_name.human, articles_path
+      %small
+        = link_to "글쓰기", new_article_path
+    = render 'form'
