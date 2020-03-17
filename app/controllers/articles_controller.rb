@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     hastag
     if @article.save
-      # CrawlingJob.perform_async(@article.id)
+      CrawlingJob.perform_async(@article.id)
       redirect_to articles_path(sort: :recent)
     else
       errors_to_flash(@article)
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(url: parsed_url, body: slack_text)
     hastag
     @article.save!
-    # CrawlingJob.perform_async(@article.id)
+    CrawlingJob.perform_async(@article.id)
   end
 
   def edit

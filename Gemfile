@@ -55,12 +55,18 @@ gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 
 # jobs
-gem 'sidekiq', '~> 4.1'
-gem 'sidekiq-cron', '~> 1.0', '>= 1.0.4'
+gem 'sidekiq', '~> 4.2', '>= 4.2.10'
+gem 'sidekiq-cron', '~> 1.1'
+gem 'sidekiq-unique-jobs', '~> 6.0', '>= 6.0.12'
+gem 'sidekiq-grouping', '~> 1.0', '>= 1.0.10'
 gem 'redis', '~> 3.2', '>= 3.2.2'
 gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
-gem 'sidekiq-unique-jobs', '~> 4.0', '>= 4.0.16'
 gem 'capistrano-sidekiq'
+
+# crawling
+gem 'mechanize', '~> 2.7', '>= 2.7.5'
+gem 'video_info', '~> 2.6'
+gem 'fastimage', '~> 1.9'
 
 # Use Capistrano for deployment
 gem 'unicorn'

@@ -1,0 +1,16 @@
+# score_job:
+#   cron: "1 * * * * Asia/Seoul"
+#   class: "ScoreJob"
+#   queue: default
+# summary_mailing_job:
+#   class: IssuesSummaryMailingJob
+#   cron: "*/25 * * * 1 Asia/Seoul"
+#   queue: default
+# clypit_job:
+#   class: ClypitJob
+#   cron: "*/5 * * * * Asia/Seoul"
+#   queue: default
+# parti_hightlight_posts_job:
+#   class: PartiHightlightPostsJob
+#   cron: "*/30 * * * * Asia/Seoul"
+#   queue: default
