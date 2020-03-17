@@ -4,8 +4,10 @@
     = "'#{params[:q]}'"
 
 %section
-  .list-group
-    = render @articles
+  .row.row-cols-1.row-cols-sm-2.row-cols-md-4
+    - @articles.each do |article|
+      .col.mb-4
+        = render article
 
   .d-flex.justify-content-center
     = paginate @articles

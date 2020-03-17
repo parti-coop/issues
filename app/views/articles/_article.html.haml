@@ -1,9 +1,7 @@
-= link_to article, class: "list-group-item list-group-item-action" do
-  .d-flex.w-100.justify-content-between
-    %h5.mb-1
-      = article.url
-    %small
-      %i.far.fa-clock
-      = l article.created_at
-  %p.mb-1= article.body
-  %small small text.
+.card.border-0
+  - if article.image.attached?
+    = image_tag article.image, class: "card-img-top"
+  .card-body
+    = link_to article do
+      %h5.card-title.text-dark= article.title || article.url
+    %h6.card-subtitle.mb-2.text-muted= article.site_name

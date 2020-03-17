@@ -22,7 +22,7 @@ ko:
     search: 검색
   title:
     main: 기사 목록
-    recent_updates: 최신 데이터
+    recent_articles: 최신 게시글
   link:
     new_article: 기사 입력
     new: 추가

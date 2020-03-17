@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.page(params[:page])
+    @articles = Article.recent.page(params[:page])
+  end
+
+  def show
   end
 
   def new
@@ -62,7 +65,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def article_params

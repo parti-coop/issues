@@ -1,41 +1,27 @@
-%section.page-block
-  .container
-    %h4
-      = link_to Article.model_name.human, articles_path
+.container
+  .row
+    .col-md-9
+      .card.border-0
+        - if @article.image.attached?
+          = image_tag @article.image, class: "card-img-top"
 
-    .panel.panel-default
-      .panel-body
-        .media
-          .media-left
-            - if @article.image_present?
-              = image_tag @article.image.sm.url, class: 'media-object'
-          .media-body
-            %h2.media-heading
-              = link_to @article.title, @article.url
-            .meta
-              %span= @article.site_name
-              - if @article.user.present?
-                = link_to @article.user do
-                  %span
-                    = image_tag @article.user.image.sm, class: 'user-thumb-sm'
-                    = @article.user.nickname
-              %span
-                - if can? :update, @article
-                  = link_to [:edit, @article] do
-                    %i.fa.fa-edit
-                - if can? :destroy, @article
-                  = link_to @article, method: :delete, data: { confirm: '삭제하시겠습니까?' } do
-                    %i.fa.fa-trash
-            %p.lead
-              = excerpt(@article.desc, length: 90)
+        .card-body
+          %h3.card-title= @article.title || @article.url
+          %h6.card-subtitle= @article.site_name
 
-            %div.m-b
-              - @article.tags.each do |tag|
-                = link_to articles_path(tag: tag.name) do
-                  %span.label.label-primary ##{tag.name}
+          .py-4
+            = link_to "게시글 읽기", @article.url, target: "_blank", class: "btn btn-outline-primary btn-block"
 
-            %div
-              = render 'likes/button', likable: @article
+          - if @article.user == current_user
+            .text-right
+              = link_to t("link.edit"), [:edit, @article]
+              = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
 
-    .article__comments
-      = render 'comments/list', commentable: @article
+      %section#comments
+        comments here
+
+    .col-md-3
+      %h5.text-muted= t('title.recent_articles')
+      - Article.recent.limit(5).each do |article|
+        .mb-4
+          = render article

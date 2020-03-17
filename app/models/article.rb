@@ -18,9 +18,7 @@ class Article < ApplicationRecord
   def set_crawling_data(data)
     self.metadata = data.metadata.to_json || self.metadata
     self.title = data.title || self.title
-    self.image = (data.image_io if data.image_io) || self.image
-    self.image_width = (data.image_width if data.image_io) || self.image_width
-    self.image_height = (data.image_height if data.image_io) || self.image_height
+    self.image.attach(io: data.image_io, filename: data.image_original_filename) if data.image_io
     self.page_type = data.type || self.page_type
     self.desc = data.description || self.desc
     self.site_name = data.site_name || self.site_name
