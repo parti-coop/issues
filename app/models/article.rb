@@ -1,7 +1,4 @@
 class Article < ApplicationRecord
-  # include Likable
-
-  # acts_as_taggable
   paginates_per 20
 
   belongs_to :user
@@ -14,6 +11,11 @@ class Article < ApplicationRecord
   has_one_attached :image
 
   after_initialize :set_crawling_status
+  after_create :add_comment
+
+  def add_comment
+    comments.create(user: user, body: "제보하였습니다")
+  end
 
   def set_crawling_data(data)
     self.metadata = data.metadata.to_json || self.metadata

@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-9
-      .card.border-0
+      .card.border-0.mb-4
         - if @article.image.attached?
           = image_tag @article.image, class: "card-img-top"
 
@@ -18,7 +18,7 @@
               = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
 
       %section#comments
-        comments here
+        = render @article.comments
 
     .col-md-3
       %h5.text-muted= t('title.recent_articles')
