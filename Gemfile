@@ -14,6 +14,9 @@ gem 'pg'
 gem 'devise'
 gem 'cancancan'
 
+# i18n
+gem 'http_accept_language'
+
 # tools
 gem "rails-settings-cached", "~> 2.0"
 gem 'acts-as-taggable-on', '~> 6.0'
