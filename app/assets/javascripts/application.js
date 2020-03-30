@@ -18,6 +18,10 @@
 $(document).on('ready show.bs closed.bs load page:change turbolinks:load', function () {
   $.onmount();
   initializeSummernote();
+
+  $('[data-toggle="offcanvas"]').on('click', function () {
+    $('.offcanvas-collapse').toggleClass('open');
+  })
 });
 
 $(document).on('turbolinks:before-cache', function () { $.onmount.teardown() });

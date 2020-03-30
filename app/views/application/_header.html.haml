@@ -1,10 +1,26 @@
-%header.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
-  %h5.my-0.mr-md-auto.font-weight-normal= link_to t("site_name"), root_path, class: "text-dark"
-  %nav.my-2.my-md-0.mr-md-3
-    = link_to t("menu.articles"), articles_path, class: "p-2 text-dark"
+%header
+  %nav.navbar.fixed-top.navbar-dark.bg-dark.justify-content-start
+    %button.navbar-toggler.p-0.border-0.mr-2{"data-toggle" => "offcanvas", :type => "button"}
+      %span.navbar-toggler-icon
 
-    - if user_signed_in?
-      = link_to t("link.new_article"), new_article_path, class: "btn btn-primary btn-sm"
-      = link_to t("link.sign_out"), destroy_user_session_path, method: :delete, class: "btn btn-outline-primary btn-sm"
-    - else
-      = link_to t("link.sign_in"), new_user_session_path, class: "btn btn-outline-primary btn-sm"
+    .navbar-collapse.offcanvas-collapse
+      %ul.navbar-nav
+
+        %li.nav-item.mt-4
+          %small.text-light
+            %i.far.fa-newspaper
+        %li.nav-item= link_to t("menu.articles"), articles_path, class: "nav-link"
+        - if user_signed_in?
+          %li.nav-item= link_to t("link.new_article"), new_article_path, class: "nav-link"
+
+        %li.nav-item.mt-4
+          %small.text-light
+            %i.far.fa-user
+        - if user_signed_in?
+          %li.nav-item
+            .nav-link= current_user.email
+          %li.nav-item= link_to t("link.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link"
+        - else
+          %li.nav-item= link_to t("link.sign_in"), new_user_session_path, class: "nav-link"
+
+    = link_to t("site_name"), root_path, class: "navbar-brand"

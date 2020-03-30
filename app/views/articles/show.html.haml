@@ -10,7 +10,9 @@
           %h6.card-subtitle= @article.site_name
 
           .py-4
-            = link_to "게시글 읽기", @article.url, target: "_blank", class: "btn btn-outline-primary btn-block"
+            = link_to @article.url, target: "_blank", class: "btn btn-outline-primary btn-block" do
+              %i.fas.fa-external-link
+              게시글 읽기
 
           - if @article.user == current_user
             .text-right
