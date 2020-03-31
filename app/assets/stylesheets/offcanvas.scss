@@ -1,15 +1,22 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
 body {
-  padding-top: 56px;
+  padding-top: 50px;
+  /* font-family: "Noto Sans", "Noto Sans KR", sans-serif; */
+}
+
+header nav.navbar.fixed-top {
+  line-height: 1.0;
 }
 
 .offcanvas-collapse {
   position: fixed;
-  top: 56px; /* Height of navbar */
+  top: 42px; /* Height of navbar */
   bottom: 0;
   width: 100%;
   padding-right: 1rem;
@@ -63,6 +70,15 @@ body {
 .nav-underline .active {
   font-weight: 500;
   color: var(--gray-dark);
+}
+
+.navbar-toggler-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.navbar-brand {
+  font-size: 1rem;
 }
 
 .text-white-50 { color: rgba(255, 255, 255, .5); }
