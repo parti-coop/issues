@@ -1,0 +1,11 @@
+<% if @article.errors.any? %>
+  var $errors = $("new-article-modal .errors");
+  $errors.empty();
+  <% @article.errors.full_messages.each do |msg| %>
+    $("<li class='text-dagner'><%= msg %></li>");
+  <% end %>
+<% else %>
+  var $articles = $(".articles .row");
+  $("<%= escape_javascript(render(@article)) %>").prependTo($articles);
+  $("#new-article-modal").modal('hide');
+<% end %>

@@ -1,8 +1,30 @@
-.card.border-0
-  - if article.image.attached?
-    = link_to article do
-      = image_tag article.image, class: "card-img-top"
-  .card-body
-    = link_to article do
-      %h5.card-title.text-dark= article.title || article.url
-    %h6.card-subtitle.mb-2.text-muted= article.site_name
+- if article.crawling_status == 'not_yet'
+  .card.text-muted
+    .card-body.position-relative.overflow-hidden
+      = article.url
+      .position-absolute.bg-dark.w-100.h-100{ style: "top:0; left:0; opacity: 0.25"}
+        .d-flex.justify-content-center.align-items-center.h-100
+          .spinner-grow.text-light
+
+- else
+  .card.border-0
+    - if article.image.attached?
+      = link_to article do
+        = image_tag article.image, class: "card-img-top"
+    .card-body
+      = link_to article do
+        %h6.card-title.text-dark= article.title || article.url
+
+      .d-flex.justify-content-between
+        .text-muted
+          %small.mr-2
+            %i.far.fa-comment
+            = article.comments_count
+          %small.mr-2
+            %i.far.fa-heart
+            = article.likes_count
+
+        .text-muted
+          %small
+            = link_to article.url, target: "_blank", class: "text-muted" do
+              = article.site_name

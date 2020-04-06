@@ -24,9 +24,9 @@
             %p.p-2.lead.text-muted
               오늘의 이슈를 모읍니다
 
-    %main.py-4
-      .container
-        = yield
+    %main= yield
+
+    = render "modals"
 
     %footer.my-5.pt-5.text-muted.text-center.text-small.border-top
       %p.mb-1

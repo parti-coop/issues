@@ -10,20 +10,12 @@ class ArticlesController < ApplicationController
   def show
   end
 
-  def new
-    @article = Article.new
-  end
-
   def create
     @article = Article.new(article_params)
     @article.user = current_user
     hastag
     if @article.save
       CrawlingJob.perform_async(@article.id)
-      redirect_to articles_path(sort: :recent)
-    else
-      errors_to_flash(@article)
-      render :new
     end
   end
 
