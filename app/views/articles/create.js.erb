@@ -1,11 +1,13 @@
+var $msgs = $("#new-article-modal .msgs");
+$msgs.empty();
+
 <% if @article.errors.any? %>
-  var $errors = $("new-article-modal .errors");
-  $errors.empty();
   <% @article.errors.full_messages.each do |msg| %>
-    $("<li class='text-dagner'><%= msg %></li>");
+    $("<li class='text-danger'><%= msg %></li>").appendTo($errors);
   <% end %>
 <% else %>
   var $articles = $(".articles .row");
-  $("<%= escape_javascript(render(@article)) %>").prependTo($articles);
-  $("#new-article-modal").modal('hide');
+  $("<div class='col-6 col-md-4 col-xl-3 mb-3'><%= escape_javascript(render(@article)) %></div>").prependTo($articles);
+  $("#new-article-modal").find("input[type=text], textarea").val("");
+  $("#new-article-modal").find("#article_url").focus();
 <% end %>

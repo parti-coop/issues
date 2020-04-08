@@ -5,7 +5,8 @@
         = t('title.main')
         - if params[:q].present?
           = "'#{params[:q]}'"
-      = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
+      - if user_signed_in?
+        = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
     %section.articles
       .row

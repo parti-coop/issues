@@ -6,6 +6,7 @@
         %button.close{type: "button", data: { dismiss: "modal"}}
           &times;
       .modal-body
+        %ul.msgs
         = form_with model: Article.new do |f|
           .form-group
             = f.label :url
