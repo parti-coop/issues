@@ -10,7 +10,7 @@
   .card.border-0
     - if article.image.attached?
       = link_to article do
-        = image_tag article.image, class: "card-img-top"
+        = image_tag article.image, class: "card-img-top", style: "height: 10vh; object-fit: cover;"
     .card-body
       = link_to article do
         %h6.card-title.text-dark= article.title || article.url

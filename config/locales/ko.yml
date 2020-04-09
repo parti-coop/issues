@@ -11,6 +11,7 @@ ko:
     attributes:
       user:
         email: 이메일
+        name: 닉네임
         password: 비밀번호
         password_confirmation: 비밀번호 확인
 

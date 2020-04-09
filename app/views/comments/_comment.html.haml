@@ -1,5 +1,6 @@
 .card.border-0.mb-4
   .card-body
+    .text-dark.card-title
+      %strong= comment.user.name
+      %span.text-muted= l comment.created_at.to_date
     = comment.body
-    %div
-      %small.text-muted= l comment.created_at

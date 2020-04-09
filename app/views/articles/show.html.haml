@@ -3,7 +3,7 @@
     .col-md-9
       .card.border-0.mb-4
         - if @article.image.attached?
-          = image_tag @article.image, class: "card-img-top"
+          = image_tag @article.image, class: "card-img-top", style: "height: 40vw; object-fit: cover;"
 
         .card-body
           %h3.card-title= @article.title || @article.url
