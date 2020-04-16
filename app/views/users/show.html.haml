@@ -1,0 +1,16 @@
+%section.py-5
+  .container
+    .d-flex.justify-content-between.align-items-center.pb-3
+      %h4
+        %i.far.fa-user
+        %strong= @user.name
+        님이 제보한 기사
+
+    %section.articles
+      .row
+        - @articles.each do |article|
+          .col-6.col-md-4.col-xl-3.mb-3
+            = render article
+
+      .d-flex.justify-content-center
+        = paginate @articles
