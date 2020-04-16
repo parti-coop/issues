@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  paginates_per 20
+  paginates_per 36
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
@@ -13,9 +13,9 @@ class Article < ApplicationRecord
   has_one_attached :image
 
   after_initialize :set_crawling_status
-  after_create :add_comment
+  after_create :add_report
 
-  def add_comment
+  def add_report
     comments.create(user: user, body: "제보하였습니다")
   end
 

@@ -3,8 +3,16 @@ $msgs.empty();
 
 <% if @article.errors.any? %>
   <% @article.errors.full_messages.each do |msg| %>
-    $("<li class='text-danger'><%= msg %></li>").appendTo($errors);
+    $("<li class='text-danger'><%= msg %></li>").appendTo($msgs);
   <% end %>
+<% elsif !@article.new_record? && @article.user != current_user %>
+  alert("제보하였습니다");
+  $("#new-article-modal").find("input[type=text], textarea").val("");
+  $("#new-article-modal").find("#article_url").focus();
+<% elsif !@article.new_record? && @article.user == current_user %>
+  alert("이미 제보한 기사입니다");
+  $("#new-article-modal").find("input[type=text], textarea").val("");
+  $("#new-article-modal").find("#article_url").focus();
 <% else %>
   var $articles = $(".articles .row");
   $("<div class='col-6 col-md-4 col-xl-3 mb-3'><%= escape_javascript(render(@article)) %></div>").prependTo($articles);

@@ -11,11 +11,18 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
-    hastag
-    if @article.save
-      CrawlingJob.perform_async(@article.id)
+    @article = Article.find_by(url: params[:article][:url])
+
+    if @article.nil?
+      @article = Article.new(article_params)
+      @article.user = current_user
+      if @article.save
+        CrawlingJob.perform_async(@article.id)
+      end
+    else
+      if @article.user != current_user
+        @article.comments.create(user: current_user, body: "제보하였습니다")
+      end
     end
   end
 

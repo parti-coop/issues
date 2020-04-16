@@ -1,6 +1,16 @@
-.card.border-0.mb-4
-  .card-body
-    .text-dark.card-title
-      %strong= comment.user.name
-      %span.text-muted= l comment.created_at.to_date
-    = comment.body
+- if comment.report?
+  .card.border-0.mb-4
+    .card-body
+      .text-dark
+        = link_to comment.user.name, '#'
+        님이
+        = l comment.created_at.to_date
+        에
+        = comment.body
+- else
+  .card.border-0.mb-4
+    .card-body
+      .text-dark.card-title
+        %strong= comment.user.name
+        %span.text-muted= l comment.created_at.to_date
+      = comment.body
