@@ -15,7 +15,8 @@
             %i.far.fa-user
         - if user_signed_in?
           %li.nav-item
-            .nav-link= current_user.email
+            .nav-link
+              #{current_user.name} (#{current_user.email})
           %li.nav-item= link_to t("link.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link"
         - else
           %li.nav-item= link_to t("link.sign_in"), new_user_session_path, class: "nav-link"
