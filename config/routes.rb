@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :users
+  resources :comments, only: [:create, :destroy]
 
   if Rails.env.development?
     require 'sidekiq/web'

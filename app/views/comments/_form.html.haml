@@ -1,0 +1,14 @@
+.card.border-0.mb-3
+  .card-body
+    .text-dark.card-title
+      %strong= link_to comment.user.name, comment.user
+
+    = form_with model: comment do |f|
+      = f.hidden_field :commentable_type
+      = f.hidden_field :commentable_id
+      - if comment.parent.present?
+        parent
+      .form-group
+        = f.text_area :body, class: "form-control"
+      .form-group.mb-0
+        = f.submit class: "btn btn-secondary"

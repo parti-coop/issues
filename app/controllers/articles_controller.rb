@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comments = @article.comment_threads.order('created_at asc')
+    @new_comment = Comment.build_from(@article, current_user.id, "") if user_signed_in?
   end
 
   def create
