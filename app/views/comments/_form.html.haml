@@ -1,7 +1,7 @@
-.card.border-0.mb-3
+.card.border-0
   .card-body
     .text-dark.card-title
-      %strong= link_to comment.user.name, comment.user
+      %span= link_to comment.user.name, comment.user
 
     = form_with model: comment do |f|
       = f.hidden_field :commentable_type

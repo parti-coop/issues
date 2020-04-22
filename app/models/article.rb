@@ -2,6 +2,7 @@ class Article < ApplicationRecord
   paginates_per 36
 
   belongs_to :user
+  has_many :submissions, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
   acts_as_commentable
@@ -15,11 +16,6 @@ class Article < ApplicationRecord
   has_one_attached :image
 
   after_initialize :set_crawling_status
-  after_create :add_report
-
-  def add_report
-    comments.create(user: user, body: "제보하였습니다")
-  end
 
   def set_crawling_data(data)
     self.metadata = data.metadata.to_json || self.metadata

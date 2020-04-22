@@ -15,7 +15,7 @@ ko:
         password: 비밀번호
         password_confirmation: 비밀번호 확인
 
-  site_name: 이슈즈.asia
+  site_name: 빠띠 이슈즈
   menu:
     articles: 목록
     issues: 이슈

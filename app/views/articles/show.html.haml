@@ -20,7 +20,13 @@
                 = link_to t("link.edit"), [:edit, @article]
                 = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
 
-        %section#comments
+        %section#submission.bg-white.my-4
+          .p-4
+            - @article.submissions.each do |submission|
+              = link_to submission.user.name, submission.user
+            님이 제보하였습니다.
+
+        %section#comments.bg-white.my-4
           = render @comments
           = render "comments/form", comment: @new_comment if user_signed_in?
 

@@ -19,11 +19,14 @@ class ArticlesController < ApplicationController
       @article = Article.new(article_params)
       @article.user = current_user
       if @article.save
+        @submission = @article.submissions.build({user: current_user})
+        @submission.save
         CrawlingJob.perform_async(@article.id)
       end
     else
       if @article.user != current_user
-        @article.comments.create(user: current_user, body: "제보하였습니다")
+        @submission = @article.submissions.build({user: current_user})
+        @submission.save
       end
     end
   end
