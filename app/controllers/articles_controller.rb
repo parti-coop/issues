@@ -4,7 +4,13 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.recent.page(params[:page])
+    if params[:q].present?
+      @articles = Article.search_for(params[:q])
+    else
+      @articles = Article.all
+    end
+
+    @articles = @articles.recent.page(params[:page])
   end
 
   def show
