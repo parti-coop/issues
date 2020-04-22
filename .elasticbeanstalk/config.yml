@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: null
+    environment: issues-prod-env
     group_suffix: null
 global:
   application_name: issues
