@@ -104,6 +104,17 @@ header nav.navbar.fixed-top {
   left: 0;
 }
 
+.card .card-image {
+  position: relative;
+  padding-bottom: 56.2%;
+  img {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 .card-columns {
   @include media-breakpoint-only(sm) {
     column-count: 2;
