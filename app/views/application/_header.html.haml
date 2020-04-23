@@ -10,6 +10,9 @@
           %small.text-light
             %i.far.fa-newspaper
         %li.nav-item= link_to t("menu.articles"), articles_path, class: "nav-link"
+        - if user_signed_in?
+          %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link"
+
         %li.nav-item.mt-4
           %small.text-light
             %i.far.fa-user

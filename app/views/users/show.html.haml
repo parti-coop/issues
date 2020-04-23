@@ -2,8 +2,8 @@
   .container
     .d-flex.justify-content-between.align-items-center.pb-3
       %h2
-        %i.far.fa-user
-        %strong= @user.name
+        %strong.font-weight-bold
+          '#{@user.name}'
         님이 추천한 글
 
     %section.articles

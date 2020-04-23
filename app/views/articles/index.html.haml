@@ -2,9 +2,12 @@
   .container
     .d-flex.justify-content-between.align-items-center.pb-3
       %h2
-        = t('title.main')
+        = t('menu.articles')
         - if params[:q].present?
           = "'#{params[:q]}'"
+        - if user_signed_in?
+          %small
+            = link_to t('menu.my_articles'), current_user, class: "text-muted"
       - if user_signed_in?
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 

@@ -17,12 +17,12 @@ ko:
 
   site_name: 빠띠 이슈즈
   menu:
-    articles: 목록
+    articles: 전체
+    my_articles: 내가 추천한 글
     issues: 이슈
     tags: 태그
     search: 검색
   title:
-    main: 목록
     recent_articles: 최신 게시글
   link:
     new_article: 입력
