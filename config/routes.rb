@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :articles
+  resources :articles do
+    put :vote, on: :member
+  end
   resources :users
   resources :comments, only: [:create, :destroy]
 

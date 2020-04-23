@@ -1,6 +1,6 @@
 .card.border-0
   .card-body.border-bottom
-    .text-dark.card-title
-      %span= link_to comment.user.name, comment.user
+    .card-title
+      %span= link_to comment.user.name, comment.user, class: "text-dark"
       %span.text-muted= l comment.created_at.to_date
     = simple_format comment.body, {}, { wrapper_tag: 'div' }

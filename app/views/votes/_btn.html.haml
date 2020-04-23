@@ -1,0 +1,11 @@
+- if user_signed_in? && current_user.voted_for?(@article)
+  = link_to '#', method: :put, remote: true, class: "btn btn-primary text-nowrap ml-sm-2" do
+    %i.far.fa-plus-circle
+    추천 완료
+    %strong= @article.votes_for.size
+- else
+  - path = user_signed_in? ? vote_article_path(@article) : '#'
+  = link_to path, method: :put, remote: true, class: "btn btn-outline-primary text-nowrap ml-sm-2" do
+    %i.far.fa-plus-circle
+    추천
+    %strong= @article.votes_for.size

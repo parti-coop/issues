@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   HASHTAG_REGEX = /(?:\s|^)(#(?!(?:\d+|[ㄱ-ㅎ가-힣a-z0-9_]+?_|_[ㄱ-ㅎ가-힣a-z0-9_]+?)(?:\s|$))([ㄱ-ㅎ가-힣a-z0-9\-_]+))/i
 
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :vote, :edit, :update, :destroy]
 
   def index
     if params[:q].present?
@@ -16,6 +16,10 @@ class ArticlesController < ApplicationController
   def show
     @comments = @article.comment_threads.order('created_at asc')
     @new_comment = Comment.build_from(@article, current_user.id, "") if user_signed_in?
+  end
+
+  def vote
+    @article.liked_by current_user
   end
 
   def create

@@ -4,13 +4,17 @@
       .py-5
         .card.border-0.mb-4
           .card-body
-            %h3.card-title= @article.title || @article.url
-            %h6.card-subtitle.text-muted= @article.site_name
+            .d-sm-flex.justify-content-between
+              .article-title
+                %h3.card-title= @article.title || @article.url
+                %h6.card-subtitle.text-muted= @article.site_name
+              .article-vote-btn.my-3.my-sm-0
+                = render "votes/btn", votable: @article
 
             %p.my-2.text-muted= @article.desc
 
             .py-4
-              = link_to @article.url, target: "_blank", class: "btn btn-outline-primary btn-block" do
+              = link_to @article.url, target: "_blank", class: "btn btn-outline-secondary btn-block" do
                 %i.fas.fa-external-link
                 게시글 읽기
 
@@ -18,12 +22,6 @@
               .text-right
                 = link_to t("link.edit"), [:edit, @article]
                 = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
-
-        %section#submission.bg-white.my-4
-          .p-4
-            - @article.votes_for.each do |vote|
-              = link_to vote.voter.name, vote.voter
-            님이 추천하였습니다.
 
         %section#comments.bg-white.my-4
           = render @comments
