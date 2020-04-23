@@ -26,13 +26,13 @@ ko:
     recent_articles: 최신 게시글
   link:
     new_article: 입력
-    new: 추가
+    new: 추천
     edit: 수정
     destroy: 삭제
     sign_in: 로그인
     sign_out: 로그아웃
   btn:
-    new: 추가
+    new: 추천
     search: 검색
 
   date:

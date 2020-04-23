@@ -5,11 +5,11 @@ $msgs.empty();
   <% @article.errors.full_messages.each do |msg| %>
     $("<li class='text-danger'><%= msg %></li>").appendTo($msgs);
   <% end %>
-<% elsif @submission.nil? %>
+<% elsif @status == :already_voted %>
   alert("이미 제보한 기사입니다");
   $("#new-article-modal").find("input[type=text], textarea").val("");
   $("#new-article-modal").find("#article_url").focus();
-<% elsif @article.user != @submission.user %>
+<% elsif @status == :vote_added %>
   alert("이미 제보된 기사를 추가로 제보하였습니다");
   $("#new-article-modal").find("input[type=text], textarea").val("");
   $("#new-article-modal").find("#article_url").focus();

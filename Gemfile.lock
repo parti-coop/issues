@@ -49,6 +49,7 @@ GEM
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       awesome_nested_set (>= 3.0)
+    acts_as_votable (0.12.1)
     addressable (2.3.8)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -1304,6 +1305,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   acts_as_commentable_with_threading
+  acts_as_votable
   ancestry
   aws-sdk (~> 3)
   axlsx (= 2.1.0.pre)

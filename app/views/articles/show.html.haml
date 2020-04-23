@@ -3,12 +3,11 @@
     .col-md-9
       .py-5
         .card.border-0.mb-4
-          - if @article.image.attached?
-            = image_tag @article.image, class: "card-img-top", style: "height: 40vw; object-fit: cover;"
-
           .card-body
             %h3.card-title= @article.title || @article.url
-            %h6.card-subtitle= @article.site_name
+            %h6.card-subtitle.text-muted= @article.site_name
+
+            %p.my-2.text-muted= @article.desc
 
             .py-4
               = link_to @article.url, target: "_blank", class: "btn btn-outline-primary btn-block" do
@@ -22,9 +21,9 @@
 
         %section#submission.bg-white.my-4
           .p-4
-            - @article.submissions.each do |submission|
-              = link_to submission.user.name, submission.user
-            님이 제보하였습니다.
+            - @article.votes_for.each do |vote|
+              = link_to vote.voter.name, vote.voter
+            님이 추천하였습니다.
 
         %section#comments.bg-white.my-4
           = render @comments

@@ -20,19 +20,21 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.find_by(url: params[:article][:url])
+    @status = :new
 
     if @article.nil?
       @article = Article.new(article_params)
       @article.user = current_user
       if @article.save
-        @submission = @article.submissions.build({user: current_user})
-        @submission.save
+        @article.liked_by current_user
         CrawlingJob.perform_async(@article.id)
       end
     else
       if @article.user != current_user
-        @submission = @article.submissions.build({user: current_user})
-        @submission.save
+        @article.liked_by current_user
+        @status = :vote_added
+      else
+        @status = :already_voted
       end
     end
   end
