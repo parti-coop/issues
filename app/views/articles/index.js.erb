@@ -1,0 +1,7 @@
+$("<%= j render("articles", object: @articles) %>").appendTo($(".infinite-table .row"));
+
+<% if @articles.last_page? %>
+  $(".pagination").html("That's all, folks!").hide();
+<% else %>
+  $(".pagination").html("<%= j link_to_next_page(@articles, 'Next Page', remote: true) %>");
+<% end %>

@@ -8,6 +8,7 @@
 //= require bootstrap3-typeahead.min
 //= require bootstrap-autocomplete-input
 //= require bootstrap-autocomplete-input-init
+//= require infinite-scroll.pkgd
 //= require cocoon
 //= require jquery-ui/widgets/sortable
 //= require rails_sortable
@@ -17,11 +18,19 @@
 
 $(document).on('ready show.bs closed.bs load page:change turbolinks:load', function () {
   $.onmount();
+
   initializeSummernote();
 
   $('[data-toggle="offcanvas"]').on('click', function () {
     $('.offcanvas-collapse').toggleClass('open');
   })
+
+  $('.infinite-scroll').infiniteScroll({
+    path: ".pagination a[rel=next]",
+    append: ".infinite-scroll-item",
+    prefill: true,
+    debug: true
+  });
 });
 
 $(document).on('turbolinks:before-cache', function () { $.onmount.teardown() });

@@ -12,10 +12,6 @@
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
     %section.articles
-      .row
-        - @articles.each do |article|
-          .col-12.col-sm-6.col-md-4.col-xl-3.mb-3
-            = render article
-
-      .d-flex.justify-content-center
-        = paginate @articles
+      .row.infinite-scroll
+        = render "articles", object: @articles
+      .invisible= paginate @articles
