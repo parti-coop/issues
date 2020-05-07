@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :comments, only: [:create, :destroy]
 
+  get 'pages/about', as: 'about'
+
   if Rails.env.development?
     require 'sidekiq/web'
     require 'sidekiq/cron/web'
