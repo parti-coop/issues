@@ -3,7 +3,7 @@ jobs:
   deploy:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: circleci/ruby:2.6.6
     steps:
       - checkout
       - run:
@@ -27,7 +27,7 @@ jobs:
             echo "awsebcli install complete"
       - run:
           name: Deploying
-          command: eb deploy issues-prod-env
+          command: eb deploy
  
 workflows:
   build:

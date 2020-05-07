@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: Issues-prod-env
+    environment: issues-env
 environment-defaults:
-  Issues-prod-env:
+  issues-env:
     branch: null
     repository: null
 global:
