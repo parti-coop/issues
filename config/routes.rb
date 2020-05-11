@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root "articles#index"
-
   devise_for :users
 
   resources :articles do
@@ -10,6 +8,8 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   get 'pages/about', as: 'about'
+
+  root "articles#index"
 
   if Rails.env.development?
     require 'sidekiq/web'
