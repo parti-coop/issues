@@ -13,6 +13,15 @@ development:
   adapter: postgresql
   database: issues
   encoding: unicode
+  <% if(ENV.fetch("DATABASE_HOST") != nil) %>
+  host: <%= ENV.fetch("DATABASE_HOST") %>
+  <% end %>
+  <% if(ENV.fetch("DATABASE_USERNAME") != nil) %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") %>
+  <% end %>
+  <% if(ENV.fetch("DATABASE_PASSWORD") != nil) %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  <% end %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
