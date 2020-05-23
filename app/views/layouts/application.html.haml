@@ -4,13 +4,17 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
+    %link{rel: "apple-touch-icon", href: "/apple-touch-icon.png"}
+
     %title= t("site_name")
+
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/d1995cff7d.js"}
     %script{src:"https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"}
+
   %body.bg-light
     = render "header"
 
