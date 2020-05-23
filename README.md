@@ -1,24 +1,13 @@
-# README
+# 빠띠 이슈즈
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![logo](public/android-icon-144x144.png)
+https://issues.asia/
 
-Things you may want to cover:
+## 목적
 
-* Ruby version
+이슈별로 기사나 아티클을 모으고, 주제별로 혹은 시간별로 읽으며 서로 의견을 나눕니다.
 
-* System dependencies
+## 특징
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 누구나 기사를 게시할 수 있게 했어요
+- 회원이라면 누구나 뉴스에 댓글, 태그를 달 수 있게 해요
