@@ -13,14 +13,12 @@ development:
   adapter: postgresql
   database: issues
   encoding: unicode
-  <% if(ENV.fetch("DATABASE_HOST") != nil) %>
-  host: <%= ENV.fetch("DATABASE_HOST") %>
+  host: <%= ENV.fetch("DATABASE_HOST") {"localhost"} %>
+  <% if(ENV["DATABASE_USERNAME"] != nil) %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
   <% end %>
-  <% if(ENV.fetch("DATABASE_USERNAME") != nil) %>
-  username: <%= ENV.fetch("DATABASE_USERNAME") %>
-  <% end %>
-  <% if(ENV.fetch("DATABASE_PASSWORD") != nil) %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  <% if(ENV["DATABASE_PASSWORD"] != nil) %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
   <% end %>
 
 # Warning: The database defined as "test" will be erased and
