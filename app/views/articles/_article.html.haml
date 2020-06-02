@@ -5,22 +5,22 @@
 
 - else
   .infinite-scroll-item
-    .d-flex.justify-content-between.bg-white.mb-2.p-2
+    .bg-white.mb-2.p-2
       - if article.image.attached?
         = link_to article.url do
-          = image_tag article.image, class: "mr-3", style: "width: 5em"
-      .flex-grow-1
-        = link_to article.url, class: "text-dark" do
-          %h5
-            %strong= article.title || article.url
-            %small.text-muted= article.site_name
+          = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
 
-        .text-muted{ style: "line-height: 1.2" }
-          %small= excerpt(article.desc)
+      = link_to article.url, class: "text-dark" do
+        %h5
+          %strong= article.title || article.url
+          %small.text-muted= article.site_name
 
-        .mt-2
-          = render "votes/btn", votable: article
+      .text-muted{ style: "line-height: 1.2" }
+        %small= excerpt(article.desc)
 
-          = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
-            %i.far.fa-comment
-            = article.comments_count
+      .mt-2
+        = render "votes/btn", votable: article
+
+        = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
+          %i.far.fa-comment
+          = article.comments_count
