@@ -11,16 +11,16 @@
           = image_tag article.image, class: "mr-3", style: "width: 5em"
       .flex-grow-1
         = link_to article.url, class: "text-dark" do
-          %h5.mb-0
+          %h5
             %strong= article.title || article.url
             %small.text-muted= article.site_name
 
-        .text-muted
-          %small= article.desc
+        .text-muted{ style: "line-height: 1.2" }
+          %small= excerpt(article.desc)
 
-      .d-flex.align-items-center
-        = render "votes/btn", votable: article
+        .mt-2
+          = render "votes/btn", votable: article
 
-        = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
-          %i.far.fa-comment
-          = article.comments_count
+          = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
+            %i.far.fa-comment
+            = article.comments_count
