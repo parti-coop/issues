@@ -16,7 +16,7 @@
           %small.text-muted= article.site_name
 
       .text-muted{ style: "line-height: 1.2" }
-        %small= excerpt(article.desc)
+        %small= excerpt(article.desc, length: 50)
 
       .mt-2
         = render "votes/btn", votable: article
