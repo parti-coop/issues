@@ -6,11 +6,7 @@
           '#{@user.name}'
         님이 추천한 글
 
-    %section.articles
-      .row
-        - @articles.each do |article|
-          .col-6.col-md-4.col-xl-3.mb-3
-            = render article
-
-      .d-flex.justify-content-center
-        = paginate @articles
+    %section
+      .articles.infinite-scroll
+        = render @articles
+      .invisible= paginate @articles
