@@ -1,9 +1,9 @@
 - if user_signed_in? && current_user.voted_for?(votable)
   = link_to '#', method: :put, remote: true, class: "btn btn-primary btn-sm text-nowrap mr-1" do
-    %i.far.fa-plus-circle
+    %i.fa.fa-caret-up
     %strong= votable.votes_for.size
 - else
   - path = user_signed_in? ? vote_article_path(votable) : '#'
   = link_to path, method: :put, remote: true, class: "btn btn-outline-primary btn-sm text-nowrap mr-1" do
-    %i.far.fa-plus-circle
+    %i.fa.fa-caret-up
     %strong= votable.votes_for.size
