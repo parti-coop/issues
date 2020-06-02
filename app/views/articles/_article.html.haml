@@ -11,7 +11,7 @@
           = image_tag article.image, class: "mr-3", style: "width: 5em"
       .flex-grow-1
         = link_to article.url, class: "text-dark" do
-          %h5.mt-1.mb-0
+          %h5.mb-0
             %strong= article.title || article.url
             %small.text-muted= article.site_name
 
@@ -21,6 +21,6 @@
       .d-flex.align-items-center
         = render "votes/btn", votable: article
 
-        = link_to article, class: "btn btn-outline-primary btn-sm" do
+        = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
           %i.far.fa-comment
           = article.comments_count
