@@ -11,7 +11,7 @@
       - if user_signed_in?
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
-    %section.articles
-      .row.infinite-scroll
-        = render "articles", object: @articles
+    %section
+      .articles.infinite-scroll
+        = render @articles
       .invisible= paginate @articles

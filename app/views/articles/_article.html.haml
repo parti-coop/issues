@@ -1,27 +1,26 @@
 - if article.crawling_status == 'not_yet'
-  .card.text-muted
-    .card-body.position-relative.overflow-hidden
-      = article.url
-      .position-absolute.bg-dark.w-100.h-100{ style: "top:0; left:0; opacity: 0.25"}
-        .d-flex.justify-content-center.align-items-center.h-100
-          .spinner-grow.text-light
+  .media.bg-dark.mb-2.p-2.text-white.align-items-center
+    .spinner-grow.text-light
+    = article.url
 
 - else
-  .card.border-0
-    .card-image.bg-secondary
+  .infinite-scroll-item
+    .d-flex.justify-content-between.bg-white.mb-2.p-2
       - if article.image.attached?
-        = link_to article do
-          = image_tag article.image
-    .card-body
-      = link_to article do
-        %h6.card-title
-          .text-dark= article.title || article.url
-          %small.text-muted= article.site_name
+        = link_to article.url do
+          = image_tag article.image, class: "mr-3", style: "width: 5em"
+      .flex-grow-1
+        = link_to article.url, class: "text-dark" do
+          %h5.mt-1.mb-0
+            %strong= article.title || article.url
+            %small.text-muted= article.site_name
 
-      .text-muted
-        %small.mr-2
-          %i.far.fa-plus-circle
-          = article.votes_for.size
-        %small.mr-2
+        .text-muted
+          %small= article.desc
+
+      .d-flex.align-items-center
+        = render "votes/btn", votable: article
+
+        = link_to article, class: "btn btn-outline-primary btn-sm" do
           %i.far.fa-comment
           = article.comments_count

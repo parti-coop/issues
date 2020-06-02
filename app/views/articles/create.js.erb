@@ -14,8 +14,8 @@ $msgs.empty();
   $("#new-article-modal").find("input[type=text], textarea").val("");
   $("#new-article-modal").find("#article_url").focus();
 <% else %>
-  var $articles = $(".articles .row");
-  $("<div class='col-6 col-md-4 col-xl-3 mb-3'><%= escape_javascript(render(@article)) %></div>").prependTo($articles);
+  var $articles = $(".articles");
+  $("<%= escape_javascript(render(@article)) %>").prependTo($articles);
   $("#new-article-modal").find("input[type=text], textarea").val("");
   $("#new-article-modal").find("#article_url").focus();
 <% end %>
