@@ -29,3 +29,12 @@
 
     = form_with url: articles_path, method: :get, local: true, class: "form-inline" do |f|
       = f.text_field :q, value: params[:q], placeholder: "검색", class: "form-control form-control-sm"
+
+%section.pt-4
+  .container
+    %ul.nav.justify-content-center
+      %li.nav-item
+        = link_to t("menu.articles"), articles_path, class: "nav-link active"
+      - if user_signed_in?
+        %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link"
+        %li.nav-item= link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }, class: "nav-link"
