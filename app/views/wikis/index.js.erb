@@ -1,0 +1,7 @@
+$("<%= j render("wikis", object: @wikis) %>").appendTo($(".infinite-table .row"));
+
+<% if @wikis.last_page? %>
+  $(".pagination").html("That's all, folks!").hide();
+<% else %>
+  $(".pagination").html("<%= j link_to_next_page(@wikis, 'Next Page', remote: true) %>");
+<% end %>

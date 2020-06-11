@@ -1,5 +1,9 @@
 %section.py-5
   .container
+    .pb-2
+      .d-flex.justify-content-end
+        = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
+
     .articles.infinite-scroll
       = render @articles
     .invisible= paginate @articles

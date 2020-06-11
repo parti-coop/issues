@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :articles do
     put :vote, on: :member
   end
+  resources :wikis
   resources :users
   resources :comments, only: [:create, :destroy]
 

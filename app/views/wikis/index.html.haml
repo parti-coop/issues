@@ -1,0 +1,9 @@
+%section.py-5
+  .container
+    .pb-2
+      .d-flex.justify-content-end
+        = link_to t('btn.new_wiki'), new_wiki_path
+
+    .wikis.infinite-scroll
+      = render @wikis
+    .invisible= paginate @wikis

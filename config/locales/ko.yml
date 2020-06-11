@@ -14,25 +14,29 @@ ko:
         name: 닉네임
         password: 비밀번호
         password_confirmation: 비밀번호 확인
+      wiki:
+        title: 표제어
+        body: 내용
 
   site_name: 빠띠 이슈즈
   menu:
     articles: 전체 글
-    my_articles: 내가 추천한 글
-    issues: 이슈
+    my_articles: 내 추천 글
+    wikis: 위키
     tags: 태그
     search: 검색
   title:
     recent_articles: 최신 게시글
   link:
     new_article: 입력
-    new: 추천
+    new: 글 추천
     edit: 수정
     destroy: 삭제
     sign_in: 로그인
     sign_out: 로그아웃
   btn:
-    new: 추천
+    new: 글 추천
+    new_wiki: 위키 추가
     search: 검색
 
   date:

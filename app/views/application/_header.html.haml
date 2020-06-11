@@ -32,9 +32,8 @@
 
 %section.pt-4
   .container
-    %ul.nav.justify-content-center
-      %li.nav-item
-        = link_to t("menu.articles"), articles_path, class: "nav-link active"
+    %ul.nav.nav-pills.justify-content-center
+      %li.nav-item= link_to t("menu.articles"), articles_path, class: "nav-link #{"active" if current_page?(articles_path)}"
       - if user_signed_in?
-        %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link"
-        %li.nav-item= link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }, class: "nav-link"
+        %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link #{"active" if current_page?(current_user)}"
+      %li.nav-item= link_to t("menu.wikis"), wikis_path, class: "nav-link #{"active" if current_page?(wikis_path)}"

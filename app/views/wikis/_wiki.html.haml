@@ -1,0 +1,9 @@
+.infinite-scroll-item
+  .bg-white.mb-2.p-2
+    = link_to wiki, class: "text-dark" do
+      %h5
+        %strong= wiki.title
+
+    .text-muted{ style: "line-height: 1.2" }
+      %small= excerpt(wiki.body, length: 50)
+

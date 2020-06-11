@@ -1,0 +1,23 @@
+%section.py-5
+  .container
+    .pb-2
+      .d-sm-flex.justify-content-end
+        - if user_signed_in?
+          .text-right
+            = link_to t("link.edit"), [:edit, @wiki]
+            = link_to t("link.destroy"), @wiki, method: :delete, data: { confirm: '삭제하시겠습니까?' }
+
+    .card.border-0.mb-4
+      .card-body
+
+        .wiki-title
+          %h3.font-weight-bold.card-title= @wiki.title
+        %p.my-2
+          = raw @wiki.body
+
+%section.py-5
+  .container
+    %h3= t('title.recent_wikis')
+    - Wiki.recent.limit(5).each do |wiki|
+      .mb-4
+        = render wiki
