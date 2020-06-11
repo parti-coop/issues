@@ -1,1 +1,1 @@
-$(".article-vote-btn").empty().append("<%= j(render('votes/btn', votable: @article)) %>");
+$(".<%= dom_id(@article) %>_vote_btn").replaceWith("<%= j(render('votes/btn', votable: @article)) %>");
