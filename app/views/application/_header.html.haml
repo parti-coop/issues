@@ -32,8 +32,13 @@
 
 %section.pt-4
   .container
-    %ul.nav.nav-pills.justify-content-center
-      %li.nav-item= link_to t("menu.articles"), articles_path, class: "nav-link #{"active" if current_page?(articles_path)}"
-      - if user_signed_in?
-        %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link #{"active" if current_page?(current_user)}"
-      %li.nav-item= link_to t("menu.wikis"), wikis_path, class: "nav-link #{"active" if current_page?(wikis_path)}"
+    %nav.navbar.navbar-expand.navbar-light.bg-white.rounded.justify-content-center
+      %ul.navbar-nav
+        %li.nav-item= link_to t("menu.articles"), articles_path, class: "nav-link #{"active" if current_page?(articles_path)}"
+        - if user_signed_in?
+          %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link #{"active" if current_page?(current_user)}"
+        %li.nav-item
+          = link_to '#', class: "nav-link" do
+            = t("menu.editors")
+            %small (#{User.count})
+        %li.nav-item= link_to t("menu.wikis"), wikis_path, class: "nav-link #{"active" if current_page?(wikis_path)}"

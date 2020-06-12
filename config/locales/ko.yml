@@ -20,9 +20,10 @@ ko:
 
   site_name: 빠띠 이슈즈
   menu:
-    articles: 전체 글
-    my_articles: 내 추천 글
+    articles: 최근 글
+    my_articles: 내 편집판
     wikis: 위키
+    editors: 편집자
     tags: 태그
     search: 검색
   title:
