@@ -23,5 +23,5 @@
   .container
     %h3= t('title.recent_wikis')
     - Wiki.recent.limit(5).each do |wiki|
-      .mb-4
+      .mb-2
         = render wiki

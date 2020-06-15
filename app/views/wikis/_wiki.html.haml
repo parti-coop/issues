@@ -1,10 +1,7 @@
-.card.border-0.mb-4
+.card.border-0.mb-2
   .card-body
     %h3.font-weight-bold.card-title
       = link_to wiki.title, wiki, class: "text-dark"
-
-    .my-2.text-muted
-      = excerpt(wiki.body, length: 50)
 
     %p.m-0
       %small.text-muted
