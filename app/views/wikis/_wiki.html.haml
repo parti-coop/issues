@@ -1,14 +1,12 @@
-.infinite-scroll-item
-  .card.border-0.mb-4
-    .card-body
-      .d-flex.justify-content-between
-        %h5
-          = link_to wiki, class: "text-dark" do
-            %strong= wiki.title
+.card.border-0.mb-4
+  .card-body
+    %h3.font-weight-bold.card-title
+      = link_to wiki.title, wiki, class: "text-dark"
 
-        %small.text-muted
-          최종수정
-          = wiki.updated_at.to_date
+    .my-2.text-muted
+      = excerpt(wiki.body, length: 50)
 
-      %p.m-0.text-muted{ style: "line-height: 1.2" }
-        = excerpt(wiki.body, length: 50)
+    %p.m-0
+      %small.text-muted
+        최종수정
+        = wiki.updated_at.to_date

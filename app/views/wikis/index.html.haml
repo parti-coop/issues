@@ -4,6 +4,6 @@
       .d-flex.justify-content-end
         = link_to t('btn.new_wiki'), new_wiki_path
 
-    .wikis.infinite-scroll
+    .wikis
       = render @wikis
     .invisible= paginate @wikis

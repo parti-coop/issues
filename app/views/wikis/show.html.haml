@@ -9,10 +9,15 @@
 
     .card.border-0.mb-4
       .card-body
-        .wiki-title
-          %h3.font-weight-bold.card-title= @wiki.title
-        %p.my-2
+        %h3.font-weight-bold.card-title= @wiki.title
+
+        .my-2
           = raw @wiki.body
+
+        %p.m-0
+          %small.text-muted
+            최종수정
+            = @wiki.updated_at.to_date
 
 %section.py-5
   .container
