@@ -980,6 +980,8 @@ GEM
     bootstrap_autocomplete_input (0.2.5)
     browser (4.0.0)
     builder (3.2.4)
+    by_star (3.0.0)
+      activesupport (> 3)
     byebug (11.1.3)
     cancancan (3.1.0)
     capistrano (3.13.0)
@@ -1327,6 +1329,7 @@ DEPENDENCIES
   bootstrap (~> 4.4)
   bootstrap_autocomplete_input
   browser
+  by_star
   byebug
   cancancan
   capistrano (~> 3.6)

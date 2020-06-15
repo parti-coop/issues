@@ -24,6 +24,7 @@ gem 'ancestry'
 gem "scoped_search"
 gem 'acts_as_votable'
 gem 'acts_as_commentable_with_threading'
+gem 'by_star'
 
 # activestorage
 gem 'mini_magick', '~> 4.8'

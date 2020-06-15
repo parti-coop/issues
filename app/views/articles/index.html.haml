@@ -1,9 +1,20 @@
 %section.py-5
   .container
     .pb-2
-      .d-flex.justify-content-end
+      .d-flex.justify-content-between
+        %h2.font-weight-bold
+          %small
+            = link_to "지난주", articles_path(date: l(@today.last_week))
+            &laquo;
+          %span.mx-2
+            #{@year}년 #{@week}주
+            &middot;
+            %small #{@articles.count}건
+          - unless @today == Date.current
+            %small
+              &raquo;
+              = link_to "다음주", articles_path(date: l(@today.next_week))
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
-    .articles.infinite-scroll
+    .articles
       = render @articles
-    .invisible= paginate @articles

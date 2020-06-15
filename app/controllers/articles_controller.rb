@@ -10,7 +10,11 @@ class ArticlesController < ApplicationController
       @articles = Article.all
     end
 
-    @articles = @articles.recent.page(params[:page])
+    @today = params[:date].present? ? Date.parse(params[:date]) : Date.current
+    @year = @today.year
+    @week = @today.cweek
+
+    @articles = @articles.by_year().by_cweek(@week)
   end
 
   def show
