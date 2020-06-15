@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     @year = @today.year
     @week = @today.cweek
 
-    @articles = @articles.by_year().by_cweek(@week)
+    @articles = @articles.by_year().by_cweek(@week).recent
   end
 
   def show
