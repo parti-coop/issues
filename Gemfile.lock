@@ -1156,7 +1156,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.2.3)
     popper_js (1.16.0)
-    puma (3.12.4)
+    puma (3.12.6)
     raabro (1.1.6)
     rack (2.2.2)
     rack-protection (2.0.8.1)
@@ -1358,7 +1358,7 @@ DEPENDENCIES
   mechanize (~> 2.7, >= 2.7.5)
   mini_magick (~> 4.8)
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.3)
   rails-assets-onmount!
   rails-settings-cached (~> 2.0)
