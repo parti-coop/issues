@@ -4,7 +4,7 @@ class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wikis = Wiki.recent.page(params[:page])
+    @wikis = Wiki.order("updated_at DESC").page(params[:page])
   end
 
   def new
