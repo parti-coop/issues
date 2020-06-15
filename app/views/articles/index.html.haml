@@ -2,11 +2,11 @@
   .container
     .pb-2
       .d-flex.justify-content-between
-        %h2.font-weight-bold
+        %h4.font-weight-bold
           %small
             = link_to "지난주", articles_path(date: l(@today.last_week))
             &laquo;
-          %span.mx-2
+          %span
             #{@year}년 #{@week}주
             &middot;
             %small #{@articles.count}건
