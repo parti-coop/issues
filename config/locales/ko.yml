@@ -22,7 +22,7 @@ ko:
   menu:
     articles: 최근 글
     my_articles: 내 편집판
-    wikis: 위키
+    wikis: 정책위키
     editors: 편집자
     tags: 태그
     search: 검색
@@ -37,7 +37,7 @@ ko:
     sign_out: 로그아웃
   btn:
     new: 추천하기
-    new_wiki: 위키 추가
+    new_wiki: 위키항목추가
     search: 검색
 
   date:
