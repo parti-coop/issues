@@ -4,23 +4,23 @@
     = article.url
 
 - else
-  .infinite-scroll-item
-    .bg-white.mb-2.p-2
-      - if article.image.attached?
-        = link_to article.url do
-          = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
+  .bg-white.mb-2.p-2.overflow-auto
+    - if article.image.attached?
+      = link_to article.url do
+        = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
 
-      = link_to article.url, class: "text-dark" do
-        %h5
-          %strong= article.title || article.url
-          %small.text-muted= article.site_name
+    = link_to article.url, class: "text-dark" do
+      %h5
+        %strong= article.title || article.url
 
-      .text-muted{ style: "line-height: 1.2" }
-        %small= excerpt(article.desc, length: 50)
+    .text-muted{ style: "line-height: 1.2" }
+      %small= excerpt(article.desc, length: 50)
 
-      .mt-2
-        = render "votes/btn", votable: article
+    .mt-2
+      = render "votes/btn", votable: article
 
-        = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
-          %i.far.fa-comment
-          = article.comments_count
+      = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
+        %i.far.fa-comment
+        = article.comments_count
+
+      %small.ml-2.text-muted= article.site_name
