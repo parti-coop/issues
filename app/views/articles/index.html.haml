@@ -20,7 +20,7 @@
         %div
           %span.text-muted
             정렬:
-          = link_to_unless @order == "recommend", "추천순", articles_path
+          = link_to_unless @order == "popular", "인기순", articles_path
           = link_to_unless @order == "created", "입력순", articles_path(order: "created")
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 

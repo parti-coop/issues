@@ -15,9 +15,9 @@ class ArticlesController < ApplicationController
     @week = @today.cweek
     @articles = @articles.by_year().by_cweek(@week).recent
 
-    @order = params[:order] || "recommend"
-    if @order == "recommend"
-      @articles = @articles.recent
+    @order = params[:order] || "popular"
+    if @order == "popular"
+      @articles = @articles.popular
     else
       @articles = @articles.recent
     end
