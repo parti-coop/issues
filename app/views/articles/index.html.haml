@@ -1,7 +1,7 @@
 %section.py-5
   .container
     .pb-2
-      .d-flex.justify-content-between
+      .d-flex.justify-content-center
         %h4.font-weight-bold
           %small
             = link_to "지난주", articles_path(date: l(@today.last_week))
@@ -14,6 +14,14 @@
             %small
               &raquo;
               = link_to "다음주", articles_path(date: l(@today.next_week))
+
+    .pb-2
+      .d-flex.justify-content-between
+        %div
+          %span.text-muted
+            정렬:
+          = link_to_unless @order == "recommend", "추천순", articles_path
+          = link_to_unless @order == "created", "입력순", articles_path(order: "created")
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
     .articles

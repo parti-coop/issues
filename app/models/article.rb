@@ -12,7 +12,8 @@ class Article < ApplicationRecord
 
   scoped_search on: [:title]
 
-  scope :recent, -> { order('id DESC') }
+  scope :recent, -> { order(cached_weighted_total: :desc) }
+  scope :poular, -> { order(id: :desc) }
   scope :hot, -> { order('hot_scored_datestamp DESC').order('hot_score DESC').order('likes_count DESC') }
 
   # mount

@@ -13,8 +13,14 @@ class ArticlesController < ApplicationController
     @today = params[:date].present? ? Date.parse(params[:date]) : Date.current
     @year = @today.year
     @week = @today.cweek
-
     @articles = @articles.by_year().by_cweek(@week).recent
+
+    @order = params[:order] || "recommend"
+    if @order == "recommend"
+      @articles = @articles.recent
+    else
+      @articles = @articles.recent
+    end
   end
 
   def show

@@ -1,7 +1,7 @@
 - if article.crawling_status == 'not_yet'
   .media.bg-dark.mb-2.p-2.text-white.align-items-center
-    .spinner-grow.text-light
-    = article.url
+    .spinner-grow
+    = link_to article.url, article, class: "text-light"
 
 - else
   .bg-white.mb-2.p-2.overflow-auto
