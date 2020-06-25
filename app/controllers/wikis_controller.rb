@@ -4,7 +4,14 @@ class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wikis = Wiki.order("updated_at DESC").page(params[:page])
+    if params[:category].present?
+      @wiki_category = WikiCategory.find(params[:category])
+      @wikis = @wiki_category.wikis
+    else
+      @wikis = Wiki.all
+    end
+
+    @wikis = @wikis.order("updated_at DESC").page(params[:page])
   end
 
   def new
@@ -47,6 +54,6 @@ class WikisController < ApplicationController
   end
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:wiki_category_id, :title, :body)
   end
 end

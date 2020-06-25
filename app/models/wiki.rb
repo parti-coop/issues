@@ -1,4 +1,6 @@
 class Wiki < ApplicationRecord
+  belongs_to :wiki_category
+
   paginates_per 36
 
   scoped_search on: [:title]

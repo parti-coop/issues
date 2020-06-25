@@ -1,4 +1,5 @@
 = simple_form_for @wiki do |f|
+  = f.input :wiki_category_id, collection: WikiCategory.all
   = f.input :title, as: :string, autofocus: true
   = f.input :body, as: :summernote
   = f.submit data: { disable_with: "Please wait..."}, class: 'btn btn-primary'

@@ -1,0 +1,11 @@
+.pb-2
+  .d-flex.justify-content-center
+    %ul.nav.nav-pills
+      %li.nav-item
+        = link_to "전체", wikis_path, class: "nav-link #{"active" if @wiki_category.nil?}"
+      - WikiCategory.all.each do |wiki_category|
+        %li.nav-item
+          = link_to wikis_path(category: wiki_category), class: "nav-link #{"active" if @wiki_category == wiki_category}" do
+            = wiki_category.title
+            %strong= wiki_category.wikis.count
+            개

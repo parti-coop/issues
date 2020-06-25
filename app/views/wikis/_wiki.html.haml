@@ -4,6 +4,10 @@
       = link_to wiki.title, wiki, class: "text-dark"
 
     %p.m-0
+      - if wiki.wiki_category.present?
+        %small.mr-1
+          = link_to "##{wiki.wiki_category.title}", wikis_path(category: wiki.wiki_category)
+
       %small.text-muted
         최종수정
         = wiki.updated_at.to_date
