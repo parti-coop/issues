@@ -2,7 +2,6 @@ class Article < ApplicationRecord
   paginates_per 36
 
   belongs_to :user
-  has_many :submissions, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
   acts_as_commentable
