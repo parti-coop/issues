@@ -2,4 +2,5 @@
   = f.input :url, as: :string, autofocus: true
   .text-muted.form-text
     http://나 https://로 시작하는 주소를 넣어주세요.
+  = f.input :tag_list
   = f.submit data: { disable_with: "Please wait..."}, class: 'btn btn-primary'

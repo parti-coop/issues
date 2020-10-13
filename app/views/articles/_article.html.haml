@@ -24,3 +24,6 @@
         = article.comments_count
 
       %small.ml-2.text-muted= article.site_name
+      %small.ml-2
+        - article.tags.each do |tag|
+          = link_to "##{tag}", tag_path(tag)

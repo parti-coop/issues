@@ -13,4 +13,7 @@
             = f.text_field :url, class: "form-control"
             .text-muted.form-text http://나 https://로 시작하는 주소를 넣어주세요.
           .form-group
+            = f.label :tag_list
+            = f.text_field :tag_list, class: "form-control"
+          .form-group
             = f.submit data: { disable_with: "Please wait..."}, class: 'btn btn-primary'

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :tags
   resources :articles do
     put :vote, on: :member
   end

@@ -95,7 +95,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:url, :body)
+    params.require(:article).permit(:url, :body, :tag_list)
   end
 
   def hastag
