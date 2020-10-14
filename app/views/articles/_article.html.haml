@@ -9,19 +9,19 @@
       = link_to article.url do
         = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
 
-    = link_to article.url, class: "text-dark" do
-      %h5
+    %h5
+      = link_to article.url, class: "text-dark" do
         %strong= article.title || article.url
+      %small.ml-2
+        = link_to article do
+          %i.far.fa-comment
+          = article.comments_count
 
     .text-muted{ style: "line-height: 1.2" }
       %small= excerpt(article.desc, length: 50)
 
     .mt-2
       = render "votes/btn", votable: article
-
-      = link_to article, class: "btn btn-outline-primary text-nowrap btn-sm" do
-        %i.far.fa-comment
-        = article.comments_count
 
       %small.ml-2.text-muted= article.site_name
       %small.ml-2

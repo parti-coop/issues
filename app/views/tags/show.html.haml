@@ -1,0 +1,18 @@
+%section.py-5
+  .container
+    .pb-2
+      .d-flex.justify-content-center
+        %h4.font-weight-bold
+          = @tag.name
+
+    .pb-2
+      .d-flex.justify-content-between
+        %div
+          %span.text-muted
+            정렬:
+          = link_to_unless @order == "popular", "인기순", tag_path(@tag)
+          = link_to_unless @order == "created", "입력순", tag_path(@tag, order: "created")
+        = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
+
+    .articles
+      = render @articles

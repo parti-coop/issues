@@ -5,7 +5,10 @@
         .d-sm-flex.justify-content-between
           .article-title
             %h3.font-weight-bold.card-title= @article.title || @article.url
-            %h6.card-subtitle.text-muted= @article.site_name
+            %h6.card-subtitle.text-muted.my-2= @article.site_name
+            %h6.card-subtitle.my-2
+              - @article.tags.each do |tag|
+                = link_to "##{tag}", tag_path(tag)
           .article-vote-btn.my-3.my-sm-0
             = render "votes/btn", votable: @article
 
@@ -16,9 +19,9 @@
             %i.fas.fa-external-link
             게시글 읽기
 
-        - if @article.user == current_user
-          .text-right
-            = link_to t("link.edit"), [:edit, @article]
+        .text-right
+          = link_to t("link.edit"), [:edit, @article]
+          - if @article.user == current_user
             = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
 
     %section#comments.bg-white.my-4

@@ -1,7 +1,7 @@
-%section#article.page-block
+%section.py-5
   .container
-    %h4
-      = link_to Article.model_name.human, articles_path
-      %small
-        = link_to "글쓰기", new_article_path
-    = render 'form'
+    %h2.mb-2
+      = link_to @article.title, @article
+
+    .border.bg-white.p-4
+      = render 'form'
