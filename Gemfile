@@ -49,6 +49,8 @@ gem 'cocoon'
 gem 'browser'
 gem 'rails_sortable'
 
+gem 'health_check'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-onmount'
 end
