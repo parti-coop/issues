@@ -73,7 +73,7 @@ gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
 gem 'capistrano-sidekiq'
 
 # crawling
-gem 'mechanize', '~> 2.7', '>= 2.7.5'
+gem 'mechanize', '~> 2.7'
 gem 'video_info', '~> 2.6'
 gem 'fastimage', '~> 1.9'
 
