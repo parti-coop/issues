@@ -3,17 +3,6 @@
     .pb-2
       .d-flex.justify-content-center
         %h4.font-weight-bold
-          %small
-            = link_to "지난주", articles_path(date: l(@today.last_week))
-            &laquo;
-          %span
-            #{@year}년 #{@week}주
-            &middot;
-            %small #{@articles.count}건
-          - unless @today == Date.current
-            %small
-              &raquo;
-              = link_to "다음주", articles_path(date: l(@today.next_week))
 
     .pb-2
       .d-flex.justify-content-between

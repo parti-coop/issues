@@ -10,10 +10,7 @@ class ArticlesController < ApplicationController
       @articles = Article.all
     end
 
-    @today = params[:date].present? ? Date.parse(params[:date]) : Date.current
-    @year = @today.year
-    @week = @today.cweek
-    @articles = @articles.by_year().by_cweek(@week).recent
+    @articles = @articles.recent.page(params[:page])
 
     @order = params[:order] || "popular"
     if @order == "popular"
