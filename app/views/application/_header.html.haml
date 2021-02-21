@@ -41,4 +41,3 @@
           = link_to '#', class: "nav-link" do
             = t("menu.editors")
             %small (#{User.count})
-        %li.nav-item= link_to t("menu.wikis"), wikis_path, class: "nav-link #{"active" if current_page?(wikis_path)}"

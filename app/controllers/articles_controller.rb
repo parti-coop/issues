@@ -10,14 +10,14 @@ class ArticlesController < ApplicationController
       @articles = Article.all
     end
 
-    @articles = @articles.recent.page(params[:page])
-
-    @order = params[:order] || "popular"
+    @order = params[:order] || "recent"
     if @order == "popular"
       @articles = @articles.popular
     else
       @articles = @articles.recent
     end
+
+    @articles = @articles.page(params[:page])
   end
 
   def show
