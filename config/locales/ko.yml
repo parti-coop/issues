@@ -18,7 +18,7 @@ ko:
         title: 표제어
         body: 내용
 
-  site_name: 1호
+  site_name: issues
   menu:
     articles: 최근 글
     my_articles: 내 편집판
