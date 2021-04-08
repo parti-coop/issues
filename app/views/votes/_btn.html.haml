@@ -7,3 +7,7 @@
   = link_to path, method: :put, remote: true, class: "#{dom_id(votable)}_vote_btn btn btn-outline-primary btn-sm text-nowrap mr-1" do
     %i.fa.fa-thumbs-up
     %strong= votable.votes_for.size
+
+%small.text-muted.ml-1
+  = votable.votes_for.collect {|vote| vote.voter.name }.join(', ')
+  님이 추천합니다
