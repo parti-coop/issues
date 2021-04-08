@@ -1,16 +1,14 @@
 %section.py-5
   .container
-    .pb-2
-      .d-flex.justify-content-center
-        %h4.font-weight-bold
+    .d-flex.justify-content-between.align-items-center.pb-3
+      %h2
+        %strong.font-weight-bold
+          주간 인기글:
+        = @start_date
+        \~
+        = @end_date
 
-    .pb-2
-      .d-flex.justify-content-between
-        %div
-          %span.text-muted
-            정렬:
-          = link_to_unless @order == "popular", "인기순", articles_path(order: "popular")
-          = link_to_unless @order == "created", "입력순", articles_path(order: "created")
+      - if user_signed_in?
         = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
     .articles

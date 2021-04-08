@@ -9,7 +9,12 @@
       = link_to article.url do
         = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
 
-    %h5
+    .mb-2
+      %small
+        최초추천:
+        %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
+
+    %h5.mb-1
       = link_to article, class: "text-dark" do
         %strong= article.title || article.url
         %small.text-muted= article.site_name
@@ -17,7 +22,7 @@
     .text-muted{ style: "line-height: 1.2" }
       %small= excerpt(article.desc, length: 50)
 
-    .mt-2
+    .mt-3
       = render "votes/btn", votable: article
 
       = link_to article, class: 'ml-2' do

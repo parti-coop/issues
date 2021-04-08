@@ -9,8 +9,6 @@
             %h6.card-subtitle.my-2
               - @article.tags.each do |tag|
                 = link_to "##{tag}", tag_path(tag)
-          .article-vote-btn.my-3.my-sm-0
-            = render "votes/btn", votable: @article
 
         %p.my-2.text-muted= @article.desc
 
@@ -18,11 +16,15 @@
           = link_to @article.url, target: "_blank", class: "btn btn-outline-secondary btn-block" do
             %i.fas.fa-external-link
             게시글 읽기
+        .py-4
+          .d-flex.justify-content-between
+            .article-vote-btn.my-3.my-sm-0
+              = render "votes/btn", votable: @article
 
-        .text-right
-          = link_to t("link.edit"), [:edit, @article]
-          - if @article.user == current_user
-            = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }
+            .article-actions
+              = link_to t("link.edit"), [:edit, @article]
+              - if @article.user == current_user
+                = link_to t("link.destroy"), @article, method: :delete, data: { confirm: '삭제하시겠습니까?' }, class: 'ml-2'
 
     %section#comments.bg-white.my-4
       = render @comments

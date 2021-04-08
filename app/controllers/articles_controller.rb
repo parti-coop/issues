@@ -10,12 +10,11 @@ class ArticlesController < ApplicationController
       @articles = Article.all
     end
 
-    @order = params[:order] || "recent"
-    if @order == "popular"
-      @articles = @articles.popular
-    else
-      @articles = @articles.recent
-    end
+    @start_date = 1.week.ago.to_date
+    @end_date = Date.current
+    @articles = @articles.between_times(@start_date, @end_date.tomorrow)
+
+    @articles = @articles.popular
 
     @articles = @articles.page(params[:page])
   end

@@ -38,6 +38,6 @@
         - if user_signed_in?
           %li.nav-item= link_to t("menu.my_articles"), current_user, class: "nav-link #{"active" if current_page?(current_user)}"
         %li.nav-item
-          = link_to '#', class: "nav-link" do
+          = link_to users_path, class: "nav-link" do
             = t("menu.editors")
             %small (#{User.count})

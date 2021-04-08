@@ -1,0 +1,13 @@
+.card.border-0[user]
+  .card-body
+    .d-flex.justify-content-between.align-items.center
+      %h3.card-title.font-weight-bold.m-0
+        = link_to user.name, user
+
+      %div
+        %i.far.fa-star
+          = 0
+        %i.far.fa-thumbs-up.ml-2
+          = user.articles.size
+        %i.far.fa-heart.ml-2
+          = user.articles.sum(:cached_votes_total)

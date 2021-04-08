@@ -3,10 +3,9 @@
     .d-flex.justify-content-between.align-items-center.pb-3
       %h2
         %strong.font-weight-bold
-          #{@user.name}
-        님의 추천
+          = @users.size
+        명의 편집자
 
     %section
-      .articles.infinite-scroll
-        = render @articles
-      .invisible= paginate @articles
+      .card-columns
+        = render @users
