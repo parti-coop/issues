@@ -15,8 +15,6 @@ class ArticlesController < ApplicationController
     @articles = @articles.between_times(@start_date, @end_date.tomorrow)
 
     @articles = @articles.popular
-
-    @articles = @articles.page(params[:page])
   end
 
   def show
