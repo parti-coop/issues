@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   def index
+    @tags = Article.tag_counts_on(:tags)
   end
 
   def show
