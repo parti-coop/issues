@@ -8,12 +8,16 @@
         \~
         = @end_date
 
-      - if user_signed_in?
-        = link_to t('btn.new'), '#', data: { toggle: "modal", target: "#new-article-modal" }
 
-    .articles
-      - @articles.each_with_index do |article, i|
-        - if i < 5
-          = render partial: 'best_article', locals: { article: article }
-        - else
-          = render article
+    %section.pb-5
+      %h3.font-weight-bold 베스트
+      = render partial: 'articles/best_article', collection: @best_articles, as: :article
+
+    %section.pb-5
+      %h3.font-weight-bold 목록
+      .articles
+        = render @articles.offset(5)
+
+%div{ style: 'position: fixed; right: 1em; bottom: 5em; ' }
+  = link_to '#', data: { toggle: "modal", target: "#new-article-modal" }, class: 'btn btn-primary rounded-circle' do
+    %i.fas.fa-plus

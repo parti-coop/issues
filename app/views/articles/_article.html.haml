@@ -1,13 +1,13 @@
 - if article.crawling_status == 'not_yet'
-  .media.bg-dark.mb-2.p-2.text-white.align-items-center
+  .media.bg-dark.mb-2.p-3.text-white.shadow.align-items-center
     .spinner-grow
     = link_to article.url, article, class: "text-light"
 
 - else
-  .bg-white.mb-2.p-2.overflow-auto
+  .bg-white.mb-2.p-3.shadow.overflow-auto
     - if article.image.attached?
       = link_to article.url do
-        = image_tag article.image, class: "ml-2 mb-2", style: "width: 5em; float: right"
+        = image_tag article.image, class: "ml-2 mb-2", style: "width: 7em; float: right"
 
     .mb-2
       %small

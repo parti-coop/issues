@@ -15,6 +15,8 @@ class ArticlesController < ApplicationController
     @articles = @articles.between_times(@start_date, @end_date.tomorrow)
 
     @articles = @articles.popular
+  
+    @best_articles = @articles.first(5)
   end
 
   def show
