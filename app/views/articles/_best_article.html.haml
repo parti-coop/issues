@@ -4,33 +4,35 @@
     = link_to article.url, article, class: "text-light"
 
 - else
-  .bg-white.shadow.mb-2.p-3.overflow-auto
-    .d-flex
+  .border.bg-white.mb-2.overflow-auto
+    .p-3.d-flex
       - if article.image.attached?
         = link_to article.url do
-          = image_tag article.image, class: "mr-2", style: "width: 8em;"
+          = image_tag article.image, class: "mr-2", style: "width: 10em;"
 
       .flex-grow-1
-        .mb-2
-          %small
-            최초추천:
-            %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
-
-        %h5.mb-1
+        %h4.mb-1
           = link_to article, class: "text-dark" do
+            %i.fa.fa-star.text-primary
             %strong= article.title || article.url
             %small.text-muted= article.site_name
 
         .text-muted{ style: "line-height: 1.2" }
-          %small= excerpt(article.desc, length: 50)
+          %small= excerpt(article.desc, length: 150)
 
-        .mt-3
-          = render "votes/btn", votable: article
+        .d-flex.justify-content-between.mt-3
+          %div
+            = render "votes/btn", votable: article
 
-          = link_to article, class: 'ml-2' do
-            %small
-              %i.far.fa-comment
-              = article.comments_count
-          %small.ml-2
-            - article.tags.each do |tag|
-              = link_to "##{tag}", tag_path(tag)
+            = link_to article, class: 'ml-2' do
+              %small
+                %i.far.fa-comment
+                = article.comments_count
+            %small.ml-2
+              - article.tags.each do |tag|
+                = link_to "##{tag}", tag_path(tag)
+
+          %small
+            발굴:
+            %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
+
