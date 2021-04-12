@@ -2,6 +2,6 @@
   .container
     .text-center
       - @tags.each do |tag|
-        = link_to tag_path(tag), class: 'btn btn-outline-primary mx-2' do
+        = link_to tag_path(tag), class: 'btn btn-outline-primary m-2' do
           \##{tag.name}
           %small (#{tag.taggings_count})

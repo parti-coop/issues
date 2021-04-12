@@ -14,21 +14,19 @@
         %h5.mb-1
           = link_to article, class: "text-dark" do
             %strong= article.title || article.url
-            %small.text-muted= article.site_name
 
-    .d-flex.justify-content-between.mt-3
+        .text-muted.mt-2
+          %small= article.site_name
+
+          = link_to article, class: 'ml-2' do
+            %small
+              %i.far.fa-comment
+              = article.comments_count
+          %small.ml-2
+            - article.tags.each do |tag|
+              = link_to "##{tag}", tag_path(tag)
+
+    .d-flex.justify-content-between.mt-2
       %div
         = render "votes/btn", votable: article
-
-        = link_to article, class: 'ml-2' do
-          %small
-            %i.far.fa-comment
-            = article.comments_count
-        %small.ml-2
-          - article.tags.each do |tag|
-            = link_to "##{tag}", tag_path(tag)
-
-      %small
-        발굴:
-        %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
 

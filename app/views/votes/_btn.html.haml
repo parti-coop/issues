@@ -9,5 +9,9 @@
     %strong= votable.votes_for.size
 
 %small.text-muted.ml-1
-  = votable.votes_for.collect {|vote| vote.voter.name }.join(', ')
-  님이 추천합니다
+  %span.font-weight-bold= link_to votable.user.name, votable.user, class: 'text-dark'
+  님이 최초추천
+  - if votable.votes_for.size > 1
+    &middot;
+    = votable.votes_for.reject{|vote| vote.voter_id == votable.user_id }.collect {|vote| vote.voter.name }.join(', ')
+    님이 추천
