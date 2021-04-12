@@ -1,7 +1,1 @@
-%section.py-5
-  .container
-    .text-center
-      - @tags.each do |tag|
-        = link_to tag_path(tag), class: 'btn btn-outline-primary mx-2' do
-          \##{tag.name}
-          %small (#{tag.taggings_count})
+= render partial: 'tag_list'

@@ -5,6 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.get_voted(Article).recent.page(params[:page])
+    @articles = @user.get_voted(Article)
+    
+    if params[:order].present?
+      @articles = @articles.order('id desc')
+    else
+      @articles = @articles.order('cached_votes_up desc')
+    end
+
+    @articles = @articles.page(params[:page])
   end
 end

@@ -7,6 +7,15 @@
         님의 추천
 
     %section
+      %h3
+        - if params[:order].nil?
+          %strong 인기글
+          %span.mx-2 &middot;
+          = link_to '최신글', user_path(@user, order: 'recent'), class: 'text-muted'
+        - else
+          = link_to '인기글', user_path(@user), class: 'text-muted'
+          %span.mx-2 &middot;
+          %strong 최신글
       .articles.infinite-scroll
         = render @articles
       .invisible= paginate @articles
