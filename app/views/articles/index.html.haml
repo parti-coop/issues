@@ -4,9 +4,10 @@
       %h2
         %strong.font-weight-bold
           주간 인기글:
-        = @start_date
-        \~
-        = @end_date
+        %span.font-weight-light
+          = @start_date
+          \~
+          = @end_date
 
 
     %section.pb-5
