@@ -4,11 +4,11 @@
     = link_to article.url, article, class: "text-light"
 
 - else
-  .border.bg-white.mb-2.overflow-auto
-    .p-3.d-flex
+  .border.bg-white.mb-2.p-3.overflow-auto
+    .d-flex
       - if article.image.attached?
         = link_to article.url do
-          = image_tag article.image, class: "mr-2", style: "width: 10em;"
+          = image_tag article.image, class: "mr-2", style: "width: 8em;"
 
       .flex-grow-1
         %h4.mb-1
@@ -20,19 +20,19 @@
         .text-muted{ style: "line-height: 1.2" }
           %small= excerpt(article.desc, length: 150)
 
-        .d-flex.justify-content-between.mt-3
-          %div
-            = render "votes/btn", votable: article
+    .d-flex.justify-content-between.mt-3
+      %div
+        = render "votes/btn", votable: article
 
-            = link_to article, class: 'ml-2' do
-              %small
-                %i.far.fa-comment
-                = article.comments_count
-            %small.ml-2
-              - article.tags.each do |tag|
-                = link_to "##{tag}", tag_path(tag)
-
+        = link_to article, class: 'ml-2' do
           %small
-            발굴:
-            %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
+            %i.far.fa-comment
+            = article.comments_count
+        %small.ml-2
+          - article.tags.each do |tag|
+            = link_to "##{tag}", tag_path(tag)
+
+      %small
+        발굴:
+        %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
 

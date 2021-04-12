@@ -8,7 +8,7 @@
     .d-flex
       - if article.image.attached?
         = link_to article.url do
-          = image_tag article.image, class: "mr-2", style: "width: 6em;"
+          = image_tag article.image, class: "mr-2", style: "width: 4em;"
 
       .flex-grow-1
         %h5.mb-1
@@ -16,22 +16,19 @@
             %strong= article.title || article.url
             %small.text-muted= article.site_name
 
-        .text-muted{ style: "line-height: 1.2" }
-          %small= excerpt(article.desc, length: 50)
+    .d-flex.justify-content-between.mt-3
+      %div
+        = render "votes/btn", votable: article
 
-        .d-flex.justify-content-between.mt-3
-          %div
-            = render "votes/btn", votable: article
-
-            = link_to article, class: 'ml-2' do
-              %small
-                %i.far.fa-comment
-                = article.comments_count
-            %small.ml-2
-              - article.tags.each do |tag|
-                = link_to "##{tag}", tag_path(tag)
-
+        = link_to article, class: 'ml-2' do
           %small
-            발굴:
-            %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
+            %i.far.fa-comment
+            = article.comments_count
+        %small.ml-2
+          - article.tags.each do |tag|
+            = link_to "##{tag}", tag_path(tag)
+
+      %small
+        발굴:
+        %span.font-weight-bold= link_to article.user.name, article.user, class: 'text-dark'
 
