@@ -1,13 +1,12 @@
 .card[user]
   .card-body
-    .d-flex.justify-content-between.align-items.center
-      %h3.card-title.font-weight-bold.m-0
-        = link_to user.name, user
+    %h3.card-title.font-weight-bold
+      = link_to user.name, user
 
-      %div
-        %span
-          %span 추천
-          %span.font-weight-bold= user.articles.size
-        %span.ml-1
-          %span 받은 공감
-          %span.font-weight-bold= user.articles.sum(:cached_votes_total)
+    %div
+      %span
+        %span 추천
+        %span.font-weight-bold= user.articles.size
+      %span.ml-1
+        %span 받은 공감
+        %span.font-weight-bold= user.articles.sum(:cached_votes_total)
