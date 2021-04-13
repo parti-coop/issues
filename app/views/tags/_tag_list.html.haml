@@ -1,7 +1,6 @@
 %section.py-5
   .container
-    .text-center
-      - @tags.each do |tag|
-        = link_to tag_path(tag), class: 'btn btn-outline-primary m-2' do
-          \##{tag.name}
-          %small (#{tag.taggings_count})
+    - @tags.each do |tag|
+      = link_to tag_path(tag), class: 'btn btn-outline-primary m-1' do
+        \##{tag.name}
+        %small (#{tag.taggings_count})

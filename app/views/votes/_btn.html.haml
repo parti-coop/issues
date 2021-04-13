@@ -1,17 +1,17 @@
 - if user_signed_in? && current_user.voted_for?(votable)
   = link_to '#', class: "btn btn-primary btn-sm text-nowrap mr-1" do
-    %i.fas.fa-thumbs-up
+    %i.fas.fa-heart
     %strong= votable.votes_for.size
 - else
   - path = user_signed_in? ? vote_article_path(votable) : '#'
   = link_to path, method: :put, remote: true, class: "#{dom_id(votable)}_vote_btn btn btn-outline-primary btn-sm text-nowrap mr-1" do
-    %i.fas.fa-thumbs-up
+    %i.fas.fa-heart
     %strong= votable.votes_for.size
 
 %small.text-muted.ml-1
   %span.font-weight-bold= link_to votable.user.name, votable.user, class: 'text-dark'
-  님이 최초추천
+  님이 추천
   - if votable.votes_for.size > 1
     &middot;
     = votable.votes_for.reject{|vote| vote.voter_id == votable.user_id }.collect {|vote| vote.voter.name }.join(', ')
-    님이 추천
+    님이 공감

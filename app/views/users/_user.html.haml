@@ -5,9 +5,9 @@
         = link_to user.name, user
 
       %div
-        %i.far.fa-star
-          = 0
-        %i.far.fa-thumbs-up.ml-2
-          = user.articles.size
-        %i.far.fa-heart.ml-2
-          = user.articles.sum(:cached_votes_total)
+        %span
+          %span 추천
+          %span.font-weight-bold= user.articles.size
+        %span.ml-1
+          %span 받은 공감
+          %span.font-weight-bold= user.articles.sum(:cached_votes_total)
