@@ -15,7 +15,7 @@ $msgs.empty();
   $("#new-article-modal").find("#article_url").focus();
 <% else %>
   var $articles = $(".articles");
-  $("<%= escape_javascript(render(@article)) %>").prependTo($articles);
+  $("<%= escape_javascript(render(@article)) %>").appendTo($articles);
   $("#new-article-modal").find("input[type=text], textarea").val("");
   $("#new-article-modal").find("#article_url").focus();
 <% end %>
