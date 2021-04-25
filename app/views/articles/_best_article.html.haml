@@ -4,16 +4,11 @@
     = link_to article.url, article, class: "text-light"
 
 - else
-  .border.bg-white.mb-2.p-3.overflow-auto
+  .bg-white.mb-1.p-2.overflow-auto
     .d-flex
-      - if article.image.attached?
-        = link_to article.url do
-          = image_tag article.image, class: "mr-2", style: "width: 6em;"
-
       .flex-grow-1
         %h4.mb-1
           = link_to article, class: "text-dark" do
-            %i.fa.fa-star.text-primary
             %strong= article.title || article.url
 
         .text-muted{ style: "line-height: 1.2" }
