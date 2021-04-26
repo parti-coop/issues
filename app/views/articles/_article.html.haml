@@ -8,6 +8,7 @@
     .d-flex
       .flex-grow-1
         %h5.mb-1
+          = article.id
           = link_to article, class: "text-dark" do
             = article.title || article.url
 
