@@ -8,12 +8,12 @@
     .d-flex
       .flex-grow-1
         %h5.mb-1
-          = article.id
+          %span #{article.id}.
           = link_to article, class: "text-dark" do
-            = article.title || article.url
+            %strong= article.title || article.url
 
-            %span.text-muted
-              %small= article.site_name
+          %span.text-muted
+            %small= article.site_name
 
           %small.ml-2
             = link_to article.url, target: '_blank' do
@@ -27,7 +27,6 @@
             - article.tags.each do |tag|
               = link_to "##{tag}", tag_path(tag)
 
-    .d-flex.justify-content-between.mt-1
-      %div
-        = render "votes/btn", votable: article
+    .d-flex.align-items-end.mt-1
+      = render "votes/btn", votable: article
 
