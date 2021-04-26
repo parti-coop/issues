@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
 
     @articles = @articles.popular
   
-    @best_articles = @articles.first(5)
+    @best_articles = @articles.first(8)
   end
 
   def show

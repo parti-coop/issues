@@ -2,20 +2,20 @@
   .container
     .d-flex.justify-content-between.align-items-center.pb-3
       %h2
-        %strong.font-weight-bold
-          주간 인기글:
-        %span.font-weight-light
+        %strong.font-weight-normal
+          기간
+        %span.font-weight-bold
           = @start_date.strftime('%-m/%-d')
           \~
-          = @end_date.strftime('%-m/%-d')
+          오늘
 
 
     %section.pb-5
-      %h3.font-weight-bold 베스트
+      %h3.font-weight-bold 많은 회원들이 공감한 글
       = render @best_articles
 
     %section.pb-5
-      %h3.font-weight-bold 목록
+      %h3.font-weight-bold 기간 동안 회원들이 추천한 모든 글
       .articles
         = render @articles.offset(5)
 
