@@ -8,4 +8,6 @@
 
     %section
       .card-columns
-        = render @users
+        - @users.each do |user|
+          - if user.articles.size > 0
+            = render @users

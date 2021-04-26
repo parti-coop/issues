@@ -1,4 +1,4 @@
-.card[user]
+.card.border-0[user]
   .card-body
     %h3.card-title.font-weight-bold
       = link_to user.name, user
@@ -7,6 +7,9 @@
       %span
         %span 추천
         %span.font-weight-bold= user.articles.size
-      %span.ml-1
+      %span.ml-2
+        %span 공감
+        %span.font-weight-bold= user.get_voted(Article).size
+      %span.ml-2
         %span 받은 공감
         %span.font-weight-bold= user.articles.sum(:cached_votes_total)
