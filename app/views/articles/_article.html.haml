@@ -4,29 +4,29 @@
     = link_to article.url, article, class: "text-light"
 
 - else
-  .bg-white.mb-1.p-3.overflow-auto
-    .d-flex
-      .flex-grow-1
-        %h5.mb-1
-          %span #{article.id}.
-          = link_to article, class: "text-dark" do
-            %strong= article.title || article.url
+  .media.bg-white.mb-1.p-3.overflow-auto
+    .media-body
+      %h5.mb-1
+        %span #{article.id}.
+        = link_to article, class: "text-dark" do
+          %strong= article.title || article.url
 
-          %span.text-muted
-            %small= article.site_name
+        %span.text-muted
+          %small= article.site_name
 
-          %small.ml-2
-            = link_to article.url, target: '_blank' do
-              %i.fas.fa-external-link-alt
+        %small.ml-2
+          = link_to article.url, target: '_blank' do
+            %i.fas.fa-external-link-alt
 
-          = link_to article, class: 'ml-2' do
-            %small
-              %i.far.fa-comment
-              = article.comments_count
-          %small.ml-2
-            - article.tags.each do |tag|
-              = link_to "##{tag}", tag_path(tag)
+      .d-flex.align-items-end.mt-2
+        = link_to article do
+          %i.far.fa-comment
+          = article.comments_count
+        %small.ml-2
+          - article.tags.each do |tag|
+            = link_to "##{tag}", tag_path(tag)
 
-    .d-flex.align-items-end.mt-1
-      = render "votes/btn", votable: article
+        = render "votes/btn", votable: article
 
+    - if article.image.attached?
+      = image_tag article.image, width: 64, height: 64, class: 'ml-2'
