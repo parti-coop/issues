@@ -18,13 +18,17 @@
           = link_to article.url, target: '_blank' do
             %i.fas.fa-external-link-alt
 
-      .d-flex.align-items-end.mt-2
+      - if article.tags.size > 0
+        %small
+          - article.tags.each do |tag|
+            = link_to "##{tag}", tag_path(tag)
+
+      .d-flex.align-items-end.mt-1
         = link_to article do
           %i.far.fa-comment
           = article.comments_count
-        %small.ml-2
-          - article.tags.each do |tag|
-            = link_to "##{tag}", tag_path(tag)
+
+        %span.text-muted.mx-2 &middot;
 
         = render "votes/btn", votable: article
 
