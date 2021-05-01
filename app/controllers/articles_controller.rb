@@ -25,7 +25,11 @@ class ArticlesController < ApplicationController
   end
 
   def vote
-    @article.liked_by current_user
+    if current_user.voted_for? @article
+      @article.unliked_by current_user
+    else
+      @article.liked_by current_user
+    end
   end
 
   def create
