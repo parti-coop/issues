@@ -64,7 +64,7 @@ gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 
 # jobs
-gem 'sidekiq', '~> 4.2', '>= 4.2.10'
+gem 'sidekiq', '~> 5.2'
 gem 'sidekiq-cron', '~> 1.1'
 gem 'sidekiq-unique-jobs', '~> 6.0', '>= 6.0.12'
 gem 'sidekiq-grouping', '~> 1.0', '>= 1.0.10'
