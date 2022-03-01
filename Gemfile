@@ -28,7 +28,7 @@ gem 'by_star'
 
 # activestorage
 gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'aws-sdk', '~> 3'
 
 # js
