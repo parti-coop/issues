@@ -19,16 +19,3 @@
     %main= yield
 
     = render "modals"
-
-    %footer.my-5.pt-5.text-muted.text-center.text-small.border-top
-      %p.mb-1
-        = link_to '사회적협동조합 빠띠, 더 민주적인 세상을 만듭니다', 'https://parti.coop', target: :blank, class: "text-dark"
-      %ul.list-inline
-        %li.list-inline-item
-          = link_to "소개", about_path, class: "text-dark"
-        %li.list-inline-item
-          = link_to "문의", "https://democracy-activists.parti.xyz/p/data_activists", target: "_blank", class: "text-dark"
-        %li.list-inline-item
-          %a.text-dark{:href => "#"} 이용약관
-        %li.list-inline-item
-          %a.text-dark{:href => "#"} 개인정보취급방침
