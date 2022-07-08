@@ -9,15 +9,9 @@
           \~
           오늘
 
-
     %section.pb-5
-      %h3.font-weight-bold 많은 회원들이 공감한 글
-      = render @best_articles
-
-    %section.pb-5
-      %h3.font-weight-bold 기간 동안 회원들이 추천한 모든 글
       .articles
-        = render @articles.offset(8)
+        = render @articles
 
 %div{ style: 'position: fixed; right: 1em; bottom: 5em; ' }
   = link_to '#', data: { toggle: "modal", target: "#new-article-modal" }, class: 'btn btn-primary rounded-circle' do

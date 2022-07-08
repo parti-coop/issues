@@ -4,18 +4,38 @@
     = link_to article.url, article, class: "text-light"
 
 - else
-  .media.bg-white.mb-1.p-3.overflow-auto
-    .media-body
-      %h5.mb-1
-        %span #{article.id}.
-        = link_to article, class: "text-dark" do
-          %strong= article.title || article.url
+  .bg-white.mb-1.p-2.overflow-auto
+    .d-flex.justify-content-between
+      .mr-3
+        - if user_signed_in? && current_user.voted_for?(article)
+          = link_to '#', class: "btn btn-primary text-nowrap" do
+            %i.far.fa-heart
+            = article.votes_for.size
+        - else
+          - path = user_signed_in? ? vote_article_path(article) : '#'
+          = link_to path, method: :put, remote: true, class: "#{dom_id(article)}_vote_btn btn btn-outline-primary text-nowrap" do
+            %i.far.fa-heart
+            = article.votes_for.size
 
-        %span.text-muted
-          %small= article.site_name
+      .flex-grow-1
+        %h5.mb-1
+          = link_to article, class: "text-dark" do
+            %strong= article.title || article.url
 
-        %small.ml-2
-          = link_to article.url, target: '_blank' do
-            %i.fas.fa-external-link-alt
-      .d-flex
-        = render "votes/btn", votable: article
+          %small.mx-2
+            = link_to article.url, target: '_blank' do
+              %i.fas.fa-external-link-alt
+
+        .d-flex
+          %span.text-muted
+            %small= article.site_name
+
+          .mx-2
+            &middot;
+
+          %small.text-muted
+            %span>= link_to article.user.name, article.user, class: 'text-dark'
+            - if article.votes_for.size > 1
+              ,
+              = article.votes_for.reject{|vote| vote.voter_id == article.user_id }.collect {|vote| vote.voter.name }.join(', ')
+              님 공감
